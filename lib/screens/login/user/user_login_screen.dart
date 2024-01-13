@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/user_login/user_login_bloc.dart';
 import 'package:pos_mini/screens/login/admin/admin_user_screen.dart';
+import 'package:pos_mini/screens/main/main_screen.dart';
 import 'package:pos_mini/screens/ui_util/hide_key_board.dart';
 
 class UserLoginScreen extends StatefulWidget {
@@ -29,42 +30,51 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
-        final screenWidth = constraints
-            .widthConstraints()
-            .maxWidth;
+        final screenWidth = constraints.widthConstraints().maxWidth;
         final double widthOfTheViewPort =
-        screenWidth >= 600 ? 600 : screenWidth;
+            screenWidth >= 600 ? 600 : screenWidth;
 
         return BlocConsumer<UserLoginBloc, UserLoginState>(
           listener: (context, state) {
-            if(state is UserLoginApiFetchingFailedState){
+            if (state is UserLoginApiFetchingFailedState) {
               final apiError = state.apiError;
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("${apiError.errorCode}, ${apiError.errorMessage}, ${apiError.errorData}")));
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text(
+                      "${apiError.errorCode}, ${apiError.errorMessage}, ${apiError.errorData}")));
+            }
+            if (state is UserLoginNavigateToMainScreenState) {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const MainScreen(),
+                ),
+              );
             }
           },
-          listenWhen: (prev,cur){
-            if(cur is UserLoginUiActionState){
+          listenWhen: (prev, cur) {
+            if (cur is UserLoginUiActionState) {
               return true;
             }
             return false;
           },
-          buildWhen: (prev,cur){
-            if(cur is UserLoginUIBuildState){
+          buildWhen: (prev, cur) {
+            if (cur is UserLoginUIBuildState) {
               return true;
             }
             return false;
           },
           builder: (context, state) {
-            if(state is UserLoginApiFetchingStartedState){
+            if (state is UserLoginApiFetchingStartedState) {
               errorMessage = "";
               showProgressBar = true;
             }
-            if(state is UserLoginEventFailedState){
+            if (state is UserLoginEventFailedState) {
               showProgressBar = false;
               final apiError = state.apiError;
               errorMessage = "${apiError.errorMessage}, ${apiError.errorData}";
             }
-            if(state is UserLoginEventSuccessState){
+            if (state is UserLoginEventSuccessState) {
               errorMessage = "";
               showProgressBar = false;
             }
@@ -78,8 +88,10 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
                 ),
                 centerTitle: true,
               ),
-              floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-              floatingActionButton: showProgressBar ? const CircularProgressIndicator():null,
+              floatingActionButtonLocation:
+                  FloatingActionButtonLocation.centerFloat,
+              floatingActionButton:
+                  showProgressBar ? const CircularProgressIndicator() : null,
               body: Center(
                 child: Container(
                   alignment: Alignment.center,
@@ -115,13 +127,19 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
                                   }
                                 },
                               ),
-                              if(errorMessage.isNotEmpty)
+                              if (errorMessage.isNotEmpty)
                                 Padding(
-                                  padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(8, 0, 0, 0),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      Expanded(child: Text(errorMessage,style: const TextStyle(color: Colors.red),)),
+                                      Expanded(
+                                          child: Text(
+                                        errorMessage,
+                                        style:
+                                            const TextStyle(color: Colors.red),
+                                      )),
                                     ],
                                   ),
                                 ),
@@ -133,11 +151,14 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
                                 children: [
                                   TextButton(
                                     onPressed: () {
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>const AdminUserScreen()));
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const AdminUserScreen()));
                                     },
                                     style: TextButton.styleFrom(
-                                        foregroundColor: Colors.brown
-                                    ),
+                                        foregroundColor: Colors.brown),
                                     child: const Row(
                                       children: [
                                         Text("Admin User"),
@@ -180,6 +201,8 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
   }
 
   void _userLogin(String text) {
-    context.read<UserLoginBloc>().add(UserLoginStartEvent(password: text.trim()));
+    context
+        .read<UserLoginBloc>()
+        .add(UserLoginStartEvent(password: text.trim()));
   }
 }

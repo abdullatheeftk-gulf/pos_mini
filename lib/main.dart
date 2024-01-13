@@ -5,7 +5,7 @@ import 'package:pos_mini/blocs/admin_login/admin_login_bloc.dart';
 import 'package:pos_mini/blocs/splash/splash_bloc.dart';
 import 'package:pos_mini/blocs/url/url_bloc.dart';
 import 'package:pos_mini/blocs/user_login/user_login_bloc.dart';
-import 'package:pos_mini/repository/api_repository.dart';
+import 'package:pos_mini/repository/api_repository/api_repository.dart';
 import 'package:pos_mini/repository/shared_preferences_repository.dart';
 import 'package:pos_mini/screens/splash/splash_screen.dart';
 
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           create: (context) => SharedPreferencesRepository(),
         ),
         RepositoryProvider(
-          create: (context) => ApiRepository(dio: dio),
+          create: (context) => ApiRepository(),
         ),
       ],
       child: MultiBlocProvider(

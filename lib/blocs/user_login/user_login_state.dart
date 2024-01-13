@@ -25,10 +25,4 @@ final class UserLoginEventFailedState extends UserLoginUIBuildState {
   UserLoginEventFailedState({required this.apiError});
 }
 
-/*final class AdminUserLoginSuccessState extends LoginUiBuildState {}
-
-final class AdminUserLoginFailedState extends LoginUiBuildState {
-  final ApiError apiError;
-
-  AdminUserLoginFailedState({required this.apiError});
-}*/
+final class UserLoginNavigateToMainScreenState extends UserLoginUiActionState{}

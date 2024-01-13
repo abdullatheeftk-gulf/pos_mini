@@ -24,3 +24,5 @@ final class AdminLoginActionFailedState extends AdminLoginUiBuildState{
   AdminLoginActionFailedState({required this.apiError});
 
 }
+
+final class AdminLoginNavigateToMainScreenState extends AdminLoginUiActionState{}

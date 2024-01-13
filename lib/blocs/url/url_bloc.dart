@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pos_mini/repository/api_repository.dart';
+import 'package:pos_mini/repository/api_repository/api_repository.dart';
 import 'package:pos_mini/repository/shared_preferences_repository.dart';
 import 'package:pos_mini/util/api_error.dart';
 

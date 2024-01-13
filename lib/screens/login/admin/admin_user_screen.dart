@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/admin_login/admin_login_bloc.dart';
+import 'package:pos_mini/screens/main/main_screen.dart';
 import 'package:pos_mini/screens/ui_util/hide_key_board.dart';
 
 class AdminUserScreen extends StatefulWidget {
@@ -40,6 +41,13 @@ class _AdminUserScreenState extends State<AdminUserScreen> {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: Text(
                       "${apiError.errorCode}, ${apiError.errorMessage}, ${apiError.errorData}")));
+            }
+            if (state is AdminLoginNavigateToMainScreenState) {
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MainScreen()),
+                  (route) => false,
+              );
             }
           },
           listenWhen: (prev, cur) {
