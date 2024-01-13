@@ -7,6 +7,9 @@ class Constants{
 
   static const String getProductByACategory = '/product/getProductsByCategory';
 
+  static const String userLogin = "/user/loginUser";
+  static const String adminLogin = "/admin/loginAdminUser";
+
   static const String addAProduct = '/product/addAProduct';
   static const String transliterate = '/transliterate';
   static const String translate = '/translate';
@@ -28,4 +31,5 @@ class Constants{
 
   //shared preferences
   static const saveBaseUrlToSharedPreferences = "save_base_url";
+
 }

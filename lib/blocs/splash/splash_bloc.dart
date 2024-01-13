@@ -26,7 +26,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     emit(SplashApiFetchingStartedState());
 
     final baseUrl = await sharedPreferencesRepository.getBaseUrl();
-    print("baseUrl: $baseUrl");
 
     final result = await apiRepository.getWelcomeMessage(baseUrl);
 

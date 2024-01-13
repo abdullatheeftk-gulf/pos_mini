@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/splash/splash_bloc.dart';
+import 'package:pos_mini/screens/login/user/user_login_screen.dart';
 import 'package:pos_mini/screens/set_base_url/set_base_url_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -28,16 +29,18 @@ class _SplashScreenState extends State<SplashScreen> {
         if (state is SplashApiFetchingFailedState) {
           final errorMessage = state.apiError.errorMessage;
           final errorCode = state.apiError.errorCode;
+          final errorData = state.apiError.errorData;
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("$errorCode,$errorMessage"),
+              content: Text("$errorCode,$errorMessage, $errorData"),
               duration: const Duration(seconds: 2),
             ),
           );
         }
         if (state is SplashNavigateToLoginScreenState) {
-          /*Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const UserLoginScreen()));*/
+          Navigator.pop(context);
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const UserLoginScreen()));
         }
       },
       listenWhen: (prev, cur) {
@@ -54,7 +57,7 @@ class _SplashScreenState extends State<SplashScreen> {
       },
       builder: (context, state) {
         if (state is SplashWelcomeMessageFetchFailedState) {
-          errorText = state.apiError.errorMessage;
+          errorText = "${state.apiError.errorMessage}, ${state.apiError.errorData}";
           loadingWidget = false;
           showSetBaseUrlButton = true;
         }

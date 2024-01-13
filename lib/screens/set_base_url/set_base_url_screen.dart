@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/url/url_bloc.dart';
-import 'package:pos_mini/screens/ui_util/hode_key_board.dart';
+import 'package:pos_mini/screens/login/user/user_login_screen.dart';
+import 'package:pos_mini/screens/ui_util/hide_key_board.dart';
 
 class SetBaseUrlScreen extends StatefulWidget {
   const SetBaseUrlScreen({super.key});
@@ -30,13 +31,13 @@ class _SetBaseUrlScreenState extends State<SetBaseUrlScreen> {
       listener: (context, state) {
         if (state is SetBaseUrlApiFetchingFailedState) {
           final message =
-              "${state.apiError.errorCode}, ${state.apiError.errorMessage}";
+              "${state.apiError.errorCode}, ${state.apiError.errorMessage},${state.apiError.errorData}";
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(message)));
         }
         if (state is SetBaseUrlNavigateToLoginScreenState) {
-          /* Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const UserLoginScreen()));*/
+           Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const UserLoginScreen()));
         }
       },
       listenWhen: (prev, cur) {
@@ -76,7 +77,6 @@ class _SetBaseUrlScreenState extends State<SetBaseUrlScreen> {
                   style: TextStyle(decoration: TextDecoration.underline),
                 ),
                 centerTitle: true,
-                elevation: 6,
               ),
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.centerFloat,
@@ -139,9 +139,10 @@ class _SetBaseUrlScreenState extends State<SetBaseUrlScreen> {
                                         }
                                       },
                                 style: ElevatedButton.styleFrom(
-                                    elevation: 6,
-                                    backgroundColor: Colors.blue,
-                                    foregroundColor: Colors.white),
+                                  elevation: 6,
+                                  backgroundColor: Colors.blue,
+                                  foregroundColor: Colors.white,
+                                ),
                                 child: const Text("Check and Save Base Url"),
                               ),
                             ],
