@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pos_mini/blocs/take_away/take_away_bloc.dart';
 import 'package:pos_mini/blocs/user_login/user_login_bloc.dart';
 import 'package:pos_mini/screens/login/admin/admin_user_screen.dart';
 import 'package:pos_mini/screens/main/main_screen.dart';
@@ -21,10 +22,18 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
   String errorMessage = "";
 
   @override
+  void initState() {
+    // Fetch Category List
+    context.read<TakeAwayBloc>().add(TakeAwayGetAllCategoriesEvent());
+    super.initState();
+  }
+
+  @override
   void dispose() {
     _userPasswordController.dispose();
     super.dispose();
   }
+
 
   @override
   Widget build(BuildContext context) {

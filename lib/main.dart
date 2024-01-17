@@ -2,7 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/admin_login/admin_login_bloc.dart';
+import 'package:pos_mini/blocs/main/main_bloc.dart';
 import 'package:pos_mini/blocs/splash/splash_bloc.dart';
+import 'package:pos_mini/blocs/take_away/take_away_bloc.dart';
 import 'package:pos_mini/blocs/url/url_bloc.dart';
 import 'package:pos_mini/blocs/user_login/user_login_bloc.dart';
 import 'package:pos_mini/repository/api_repository/api_repository.dart';
@@ -52,6 +54,14 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => AdminLoginBloc(
+              apiRepository: context.read<ApiRepository>(),
+            ),
+          ),
+          BlocProvider(
+            create: (_) => MainBloc()
+          ),
+          BlocProvider(
+            create: (context) => TakeAwayBloc(
               apiRepository: context.read<ApiRepository>(),
             ),
           ),
