@@ -78,8 +78,8 @@ class _SplashScreenState extends State<SplashScreen> {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                      elevation: 6,
-                      backgroundColor: Colors.blue,
+                      elevation: 0,
+                      backgroundColor: const Color.fromARGB(255, 0, 26, 51),
                       foregroundColor: Colors.white),
                   child: const Text("Set Base Url"),
                 )
@@ -91,9 +91,10 @@ class _SplashScreenState extends State<SplashScreen> {
             alignment: Alignment.bottomCenter,
             children: [
               Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  if (errorText.isEmpty)
+                  Image.asset("assets/images/back.png"),
+                 /* if (errorText.isEmpty)
                     RichText(
                       textAlign: TextAlign.center,
                       text: const TextSpan(
@@ -114,7 +115,7 @@ class _SplashScreenState extends State<SplashScreen> {
                           ),
                         ],
                       ),
-                    ),
+                    ),*/
                   if (errorText.isNotEmpty)
                     Text(
                       errorText,

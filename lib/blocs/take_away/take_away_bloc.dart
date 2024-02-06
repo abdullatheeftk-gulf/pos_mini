@@ -7,7 +7,7 @@ import 'package:pos_mini/models/category/category.dart';
 import 'package:pos_mini/models/product/product.dart';
 import 'package:pos_mini/repository/api_repository/api_repository.dart';
 import 'package:pos_mini/screens/main/widgets/take_away/widgets/menu_item_display_screen/widget/menu_display/util/ProductView.dart';
-import 'package:pos_mini/util/api_error.dart';
+import 'package:pos_mini/util/api_error/api_error.dart';
 
 part 'take_away_event.dart';
 
@@ -45,6 +45,7 @@ class TakeAwayBloc extends Bloc<TakeAwayEvent, TakeAwayState> {
 
   FutureOr<void> _takeAwayGetAllCategoriesEvent(
       TakeAwayGetAllCategoriesEvent event, Emitter<TakeAwayState> emit) async {
+    //print("categories:-  $_categories");
     emit(TakeAwayScreenShowCircularProgressIndicatorState());
     emit(TakeAwayGetAllCategoriesSuccessState(categories: _categories));
 
@@ -158,52 +159,28 @@ class TakeAwayBloc extends Bloc<TakeAwayEvent, TakeAwayState> {
   FutureOr<void> _takeAwayEditQuantityOfAProductEvent(
       TakeAwayEditQuantityOfAProductEvent event, Emitter<TakeAwayState> emit) {
     final index = event.index;
-    print("index $index");
     final qty = event.qty;
-    print("qnty $qty");
     final amount = event.amount;
-    print("amount $amount");
     final unitPrice = event.unitPrice;
-    print("price: $unitPrice");
 
     var i = 0;
-    /* _cartProductItems.indexWhere(
-      (element) {
-
-        if (i == index) {
-          element.copyWith(qty: qty,);
-          i++;
-          return true;
-        } else {
-          i++;
-          return false;
-        }
-      },
-    );*/
 
     final newList = _cartProductItems.map((element) {
-      if(i==index) {
+      if (i == index) {
         i++;
-       return element.copyWith(qty: qty);
-
-      }else{
+        return element.copyWith(qty: qty);
+      } else {
         i++;
         return element;
-
       }
-
     }).toList();
-
 
     _cartProductItems.clear();
     _cartProductItems.addAll(newList);
 
-
     _total = _total - amount;
 
     _total += (qty * unitPrice);
-    print(_total);
-    print(_cartProductItems);
 
     emit(TakeAwayShowCartProductItemsState(
         cartProductItems: _cartProductItems, total: _total));

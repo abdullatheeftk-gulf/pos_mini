@@ -20,9 +20,11 @@ class _MainScreenState extends State<MainScreen> {
     Pair(first: 'Take Away', second: 'take_away.png'),
     Pair(first: 'Table', second: 'table.png'),
     Pair(first: 'Edit', second: 'edit.png'),
-    Pair(first: 'Add Item', second: 'add_product.png'),
+    Pair(first: 'Add', second: 'add_product.png'),
     Pair(first: 'Setting', second: 'setting.png'),
   ];
+
+
 
   @override
   Widget build(BuildContext context) {

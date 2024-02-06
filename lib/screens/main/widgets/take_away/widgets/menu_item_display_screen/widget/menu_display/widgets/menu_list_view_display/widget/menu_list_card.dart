@@ -28,7 +28,7 @@ class MenuListCard extends StatelessWidget {
             children: [
               Expanded(
                 child: Image.network(
-                  "$baseUrl/downloadAnImage/${product.productImage}",
+                  "$baseUrl/images/${product.productImage}",
                   errorBuilder: (context, exception, stackTrace) {
                     return const Center(child: Text('Error'));
                   },
@@ -65,7 +65,7 @@ class MenuListCard extends StatelessWidget {
                 color: Colors.teal[900],
                 child: Center(
                   child: Ink(
-                    color: Colors.orange,
+                    color: const Color.fromARGB(255, 119, 236, 56),
                     width: 100.0,
                     // height: 100.0,
                     child: InkWell(

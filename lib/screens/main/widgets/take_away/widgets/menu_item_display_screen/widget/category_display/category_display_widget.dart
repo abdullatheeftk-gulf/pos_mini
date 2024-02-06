@@ -5,25 +5,23 @@ import 'package:pos_mini/blocs/take_away/take_away_bloc.dart';
 import 'package:pos_mini/models/category/category.dart';
 
 class CategoryDisplayWidget extends StatelessWidget {
-  const CategoryDisplayWidget({super.key});
+  final List<Category> categories;
+  const CategoryDisplayWidget({super.key, required this.categories});
 
   @override
   Widget build(BuildContext context) {
-    List<Category> categories = [];
 
     int clickedCategory = 1;
 
     return BlocBuilder<TakeAwayBloc, TakeAwayState>(
       buildWhen: (prev, cur) {
-        if (cur is TakeAwayCategoryUiState) {
+      if(cur is TakeAwayOnCategoryClickedState){
           return true;
         }
         return false;
       },
       builder: (context, state) {
-        if (state is TakeAwayGetAllCategoriesSuccessState) {
-          categories = state.categories;
-        }
+
 
         if (state is TakeAwayOnCategoryClickedState) {
           clickedCategory = state.categoryId;
@@ -46,8 +44,8 @@ class CategoryDisplayWidget extends StatelessWidget {
                             style: TextButton.styleFrom(
                               foregroundColor: (clickedCategory ==
                                       categories[index].categoryId)
-                                  ? Colors.grey.shade700
-                                  : Colors.cyan,
+                                  ? const Color.fromARGB(255, 236, 102, 56)
+                                  : const Color.fromARGB(255, 0, 26, 51),
                             ),
                             onPressed: () {
                               context.read<TakeAwayBloc>().add(
@@ -71,8 +69,8 @@ class CategoryDisplayWidget extends StatelessWidget {
                                 style: TextButton.styleFrom(
                                     foregroundColor: (clickedCategory ==
                                             categories[index].categoryId)
-                                        ? Colors.grey.shade700
-                                        : Colors.cyan),
+                                        ? const Color.fromARGB(255, 236, 102, 56)
+                                        : const Color.fromARGB(255, 0, 26, 51)),
                                 onPressed: () {
                                   context.read<TakeAwayBloc>().add(
                                         TakeAwayOnCategoryClickedEvent(

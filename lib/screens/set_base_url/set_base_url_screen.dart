@@ -36,6 +36,7 @@ class _SetBaseUrlScreenState extends State<SetBaseUrlScreen> {
               .showSnackBar(SnackBar(content: Text(message)));
         }
         if (state is SetBaseUrlNavigateToLoginScreenState) {
+          Navigator.pop(context);
            Navigator.push(context,
               MaterialPageRoute(builder: (context) => const UserLoginScreen()));
         }
@@ -139,8 +140,7 @@ class _SetBaseUrlScreenState extends State<SetBaseUrlScreen> {
                                         }
                                       },
                                 style: ElevatedButton.styleFrom(
-                                  elevation: 6,
-                                  backgroundColor: Colors.blue,
+                                  backgroundColor: const Color.fromARGB(255, 0, 26, 51),
                                   foregroundColor: Colors.white,
                                 ),
                                 child: const Text("Check and Save Base Url"),

@@ -16,8 +16,8 @@ class _MenuItemDisplayScreenState extends State<MenuItemDisplayScreen> {
   @override
   void initState() {
     context.read<TakeAwayBloc>()
-      ..add(TakeAwayGetAllCategoriesEvent())
-      ..add(TakeAwayOnCategoryClickedEvent(categoryId: 1));
+      ..add(TakeAwayGetAllCategoriesEvent())..add(
+        TakeAwayOnCategoryClickedEvent(categoryId: 1));
     super.initState();
   }
 
@@ -29,10 +29,10 @@ class _MenuItemDisplayScreenState extends State<MenuItemDisplayScreen> {
             screenWidth: screenWidth,
             onSearchButtonClicked: (searchText) {
               context.read<TakeAwayBloc>().add(
-                    TakeAwayOnProductSearchButtonClickedEvent(
-                      searchText: searchText,
-                    ),
-                  );
+                TakeAwayOnProductSearchButtonClickedEvent(
+                  searchText: searchText,
+                ),
+              );
             },
           );
         });
@@ -42,14 +42,16 @@ class _MenuItemDisplayScreenState extends State<MenuItemDisplayScreen> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
-        final screenWidth = constraints.widthConstraints().maxWidth;
+        final screenWidth = constraints
+            .widthConstraints()
+            .maxWidth;
         return Scaffold(
           floatingActionButton: FloatingActionButton(
             onPressed: () {
               _showProductSearchDialog(screenWidth);
             },
             foregroundColor: Colors.white,
-            backgroundColor: Colors.blue,
+            backgroundColor: const Color.fromARGB(255, 0, 26, 51),
             child: const Icon(Icons.search),
           ),
 
@@ -59,12 +61,26 @@ class _MenuItemDisplayScreenState extends State<MenuItemDisplayScreen> {
               SizedBox(
                 width: screenWidth > 800
                     ? (screenWidth > 1200)
-                        ? (screenWidth > 1600)
-                            ? 160
-                            : 120
-                        : 80
+                    ? (screenWidth > 1600)
+                    ? 160
+                    : 120
+                    : 80
                     : 40,
-                child: const CategoryDisplayWidget(),
+                child: BlocBuilder<TakeAwayBloc, TakeAwayState>(
+                  buildWhen: (prev,cur){
+                    if(cur is TakeAwayGetAllCategoriesSuccessState){
+                      return true;
+                    }
+                    return false;
+                  },
+                  builder: (context, state) {
+
+                    if(state is TakeAwayGetAllCategoriesSuccessState){
+                      return  CategoryDisplayWidget(categories: state.categories,);
+                    }
+                    return const CategoryDisplayWidget(categories: [],);
+                  },
+                ),
               ),
               const Expanded(child: MenuDisplayWidget()),
             ],

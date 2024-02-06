@@ -32,7 +32,7 @@ class _AddAProductDialogState extends State<AddAProductDialog> {
         textAlign: TextAlign.center,
         style: const TextStyle(
           decoration: TextDecoration.underline,
-          color: Colors.blue,
+          color: Color.fromARGB(255, 0, 26, 51),
         ),
       ),
       content: SingleChildScrollView(
@@ -147,7 +147,9 @@ class _AddAProductDialogState extends State<AddAProductDialog> {
                 Navigator.pop(context);
               },
               style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white, backgroundColor: Colors.blue),
+                foregroundColor: Colors.white,
+                backgroundColor: const Color.fromARGB(255, 0, 26, 51),
+              ),
               child: const Text('Add'),
             ),
           ],

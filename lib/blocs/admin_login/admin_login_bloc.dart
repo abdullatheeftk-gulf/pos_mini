@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/models/admin_user/admin_user.dart';
 import 'package:pos_mini/repository/api_repository/api_repository.dart';
-import 'package:pos_mini/util/api_error.dart';
+import 'package:pos_mini/util/api_error/api_error.dart';
 
 part 'admin_login_event.dart';
 part 'admin_login_state.dart';

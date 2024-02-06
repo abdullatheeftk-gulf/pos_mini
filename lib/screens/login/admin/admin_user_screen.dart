@@ -192,12 +192,13 @@ class _AdminUserScreenState extends State<AdminUserScreen> {
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  elevation: 6,
-                                  backgroundColor: Colors.blue,
+
+                                  backgroundColor: const Color.fromARGB(255, 0, 26, 51),
                                   foregroundColor: Colors.white,
                                 ),
                                 child: const Text("Login"),
                               ),
+                              const SizedBox(height: 16,)
                             ],
                           ),
                         ),

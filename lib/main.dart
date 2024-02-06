@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pos_mini/blocs/add/add_bloc.dart';
+import 'package:pos_mini/blocs/add/edit_product/edit_product_cubit.dart';
 import 'package:pos_mini/blocs/admin_login/admin_login_bloc.dart';
 import 'package:pos_mini/blocs/main/main_bloc.dart';
 import 'package:pos_mini/blocs/splash/splash_bloc.dart';
@@ -65,12 +67,20 @@ class MyApp extends StatelessWidget {
               apiRepository: context.read<ApiRepository>(),
             ),
           ),
+          BlocProvider(
+            create: (context) => AddBloc(
+              apiRepository: context.read<ApiRepository>(),
+            ),
+          ),
+          BlocProvider(create: (context) => EditProductCubit(
+            apiRepository: context.read<ApiRepository>(),
+          ),)
         ],
         child: MaterialApp(
           title: 'Unipos Pos Mini',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+            colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 0, 26, 51)),
             useMaterial3: true,
           ),
           home: const SplashScreen(),
@@ -79,3 +89,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+

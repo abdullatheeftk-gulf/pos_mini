@@ -10,3 +10,5 @@ final class MainScreenNavigationMenuItemClickedState extends MainState{
 
   MainScreenNavigationMenuItemClickedState({required this.selectedMenuName});
 }
+
+

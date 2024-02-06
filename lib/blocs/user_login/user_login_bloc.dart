@@ -6,7 +6,7 @@ import 'package:pos_mini/models/admin_user/admin_user.dart';
 import 'package:pos_mini/models/user/user.dart';
 import 'package:pos_mini/models/user_response/user_response.dart';
 import 'package:pos_mini/repository/api_repository/api_repository.dart';
-import 'package:pos_mini/util/api_error.dart';
+import 'package:pos_mini/util/api_error/api_error.dart';
 
 
 

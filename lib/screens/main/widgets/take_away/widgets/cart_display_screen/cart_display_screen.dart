@@ -40,125 +40,134 @@ class _CartDisplayScreenState extends State<CartDisplayScreen> {
             final screenWidth = constraints.widthConstraints().maxWidth;
 
             return Scaffold(
-                body: (_cartProductItems.isEmpty)
+              body: (_cartProductItems.isEmpty)
 
-                    // Show empty cart
-                    ? Center(
-                        child: Icon(
-                          Icons.no_food_rounded,
-                          size: screenWidth > 600 ? 150 : 100,
-                          color: const Color.fromARGB(124, 124, 124, 124),
+                  // Show empty cart
+                  ? Center(
+                      child: Icon(
+                        Icons.no_food_rounded,
+                        size: screenWidth > 600 ? 150 : 100,
+                        color: const Color.fromARGB(124, 124, 124, 124),
+                      ),
+                    )
+
+                  // Show cart products
+                  : Column(
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                height: 60,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.white54),
+                                  color: const Color.fromARGB(255, 0, 26, 51),
+                                ),
+                                child: const Center(
+                                  child: Text(
+                                    '#',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 17,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 8,
+                              child: Container(
+                                alignment: Alignment.centerLeft,
+                                height: 60,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.white54),
+                                  color: const Color.fromARGB(255, 0, 26, 51),
+                                ),
+                                child: const Padding(
+                                  padding:
+                                      EdgeInsets.only(left: 4.0, right: 4.0),
+                                  child: Text(
+                                    'Item',
+                                    style: TextStyle(color: Colors.white,fontSize: 17,),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                height: 60,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.white54),
+                                  color: const Color.fromARGB(255, 0, 26, 51),
+                                ),
+                                child: const Center(
+                                  child: Text(
+                                    'Qty',
+                                    style: TextStyle(color: Colors.white,fontSize: 17,),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 3,
+                              child: Container(
+                                height: 60,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.white54),
+                                  color: const Color.fromARGB(255, 0, 26, 51),
+                                ),
+                                child: const Center(
+                                  child: Text(
+                                    'Price',
+                                    style: TextStyle(color: Colors.white,fontSize: 17,),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 4,
+                              child: Container(
+                                height: 60,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.white54),
+                                  color: const Color.fromARGB(255, 0, 26, 51),
+                                ),
+                                child: const Center(
+                                  child: Text(
+                                    'Amnt',
+                                    style: TextStyle(color: Colors.white,fontSize: 17,),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                height: 60,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.white54),
+                                  color: const Color.fromARGB(255, 0, 26, 51),
+                                ),
+                                child: const Center(
+                                  child: Text(''),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      )
-
-                    // Show cart products
-                    : Column(
-                        children: [
-                          Row(
+                        Expanded(
+                            child: CartListDisplayWidget(
+                          cartProductItems: _cartProductItems,
+                          total: _total,
+                        )),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
                             children: [
-                              Expanded(
-                                flex: 2,
-                                child: Container(
-                                  height: 60,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black26),
-                                      color: Colors.blue),
-                                  child: const Center(
-                                    child: Text(
-                                      '#',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                flex: 8,
-                                child: Container(
-                                  alignment: Alignment.centerLeft,
-                                  height: 60,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black26),
-                                      color: Colors.blue),
-                                  child: const Padding(
-                                    padding:
-                                        EdgeInsets.only(left: 4.0, right: 4.0),
-                                    child: Text(
-                                      'Item',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                flex: 2,
-                                child: Container(
-                                  height: 60,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black26),
-                                      color: Colors.blue),
-                                  child: const Center(
-                                    child: Text(
-                                      'Qty',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                flex: 3,
-                                child: Container(
-                                  height: 60,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black26),
-                                      color: Colors.blue),
-                                  child: const Center(
-                                    child: Text(
-                                      'Price',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                flex: 4,
-                                child: Container(
-                                  height: 60,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black26),
-                                      color: Colors.blue),
-                                  child: const Center(
-                                    child: Text(
-                                      'Amnt',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                flex: 2,
-                                child: Container(
-                                  height: 60,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black26),
-                                      color: Colors.blue),
-                                  child: const Center(
-                                    child: Text(''),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Expanded(
-                              child: CartListDisplayWidget(
-                            cartProductItems: _cartProductItems,
-                            total: _total,
-                          )),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                /*BottomConnectButton(
+                              /*BottomConnectButton(
                           generateInvoiceButtonClicked: () {
                             _showSubmitAlertDialog(
                                 cartProductItems, total, context);
@@ -167,18 +176,19 @@ class _CartDisplayScreenState extends State<CartDisplayScreen> {
                             // Todo
                           },
                         ),*/
-                                ElevatedButton(
-                                  onPressed: () {},
-                                  child: const Text("Generate invoice"),
-                                ),
-                                const SizedBox(
-                                  height: 12,
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ));
+                              ElevatedButton(
+                                onPressed: () {},
+                                child: const Text("Generate invoice"),
+                              ),
+                              const SizedBox(
+                                height: 12,
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+            );
           },
         );
       },

@@ -3,18 +3,27 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/take_away/take_away_bloc.dart';
 import 'package:pos_mini/screens/main/widgets/take_away/widgets/cart_display_screen/cart_display_screen.dart';
 import 'package:pos_mini/screens/main/widgets/take_away/widgets/menu_item_display_screen/menu_item_display_screen.dart';
+import 'package:pos_mini/screens/ui_util/show_floating_action_circular_progress_indicator.dart';
 
-import 'widgets/menu_item_display_screen/widget/util/take_away_progress_bar/take_away_progress_bar.dart';
 
-class TakeAwayScreen extends StatelessWidget {
+class TakeAwayScreen extends StatefulWidget {
   const TakeAwayScreen({super.key});
 
+  @override
+  State<TakeAwayScreen> createState() => _TakeAwayScreenState();
+}
+
+class _TakeAwayScreenState extends State<TakeAwayScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 0, 26, 51)),
         useMaterial3: true,
       ),
       home: DefaultTabController(
@@ -50,7 +59,7 @@ class TakeAwayScreen extends StatelessWidget {
                 } else {
                   showProgressBar = false;
                 }
-                return takeAwayProgressBar(context, showProgressBar);
+                return showFloatingCircularProgressIndicator(context, showProgressBar);
               },
             ),
             appBar: AppBar(
@@ -66,6 +75,8 @@ class TakeAwayScreen extends StatelessWidget {
                   ),
                   Tab(
                     icon: Badge(
+                      offset: const Offset(8, -8),
+                      backgroundColor: const Color.fromARGB(255, 0, 26, 51) ,
                       label: BlocBuilder<TakeAwayBloc, TakeAwayState>(
                         buildWhen: (prev, cur) {
                           if (cur is TakeAwayShowBadgeCountState) {
@@ -87,7 +98,7 @@ class TakeAwayScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              backgroundColor: Colors.orange,
+              backgroundColor: const Color.fromARGB(255, 236, 102, 56),
             ),
             body: const TabBarView(
               children: [

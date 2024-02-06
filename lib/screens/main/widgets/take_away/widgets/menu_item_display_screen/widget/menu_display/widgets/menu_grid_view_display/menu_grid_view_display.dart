@@ -15,13 +15,14 @@ class MenuGridViewDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      final width = constraints.widthConstraints().maxWidth;
+      final screenWidth = constraints.widthConstraints().maxWidth;
 
-      return GridView.count(
-        crossAxisCount: width >= 550
-            ? (width > 900)
-                ? (width > 1200)
-                    ? (width > 1600)
+      return
+        GridView.count(
+        crossAxisCount: screenWidth >= 600
+            ? (screenWidth > 900)
+                ? (screenWidth > 1200)
+                    ? (screenWidth > 1600)
                         ? 7
                         : 6
                     : 5

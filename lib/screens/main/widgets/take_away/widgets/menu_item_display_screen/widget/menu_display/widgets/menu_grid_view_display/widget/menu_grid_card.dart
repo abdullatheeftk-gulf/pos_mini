@@ -25,7 +25,8 @@ class MenuGridCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.network(
-              "$baseUrl/downloadAnImage/${product.productImage}",
+              //"$baseUrl/downloadAnImage/${product.productImage}",
+              "$baseUrl/static/${product.productImage}",
               height: 100,
               errorBuilder: (context, exception, stackTrace) {
                 return const Center(child: SizedBox(height:100,child: Center(child: Text('Error'))));
@@ -51,7 +52,7 @@ class MenuGridCard extends StatelessWidget {
               child: Material(
                 child: Center(
                   child: Ink(
-                    color: Colors.orange,
+                    color: const Color.fromARGB(255, 236, 102, 56),
                     height: 100.0,
                     child: InkWell(
                       onTap: () {
