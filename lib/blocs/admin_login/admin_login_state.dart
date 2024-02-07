@@ -24,5 +24,14 @@ final class AdminLoginActionFailedState extends AdminLoginUiBuildState{
   AdminLoginActionFailedState({required this.apiError});
 
 }
+final class AdminShowChangePasswordAlertDialog extends AdminLoginUiActionState{}
 
 final class AdminLoginNavigateToMainScreenState extends AdminLoginUiActionState{}
+
+
+final class AdminPasswordResetFailedState extends AdminLoginUiActionState{
+  final ApiError apiError;
+
+  AdminPasswordResetFailedState({required this.apiError});
+}
+

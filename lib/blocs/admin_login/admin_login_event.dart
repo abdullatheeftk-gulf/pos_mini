@@ -9,3 +9,10 @@ final class AdminLoginStartedEvent extends AdminLoginEvent{
 
   AdminLoginStartedEvent({required this.adminName, required this.adminPassword});
 }
+
+final class AdminUpdatePasswordEvent extends AdminLoginEvent{
+  final AdminUser oldAdminUser;
+  final AdminUser newAdminUser;
+
+  AdminUpdatePasswordEvent({required this.oldAdminUser, required this.newAdminUser});
+}
