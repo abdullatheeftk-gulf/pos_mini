@@ -16,6 +16,9 @@ class Constants{
 
   static const String updateAdminUser = "/admin/updateAdminUser";
   static const String addUser = "/admin/addUser";
+  static const String getAllUsers = "/admin/getAllUsers";
+  static const String updateUser = "/admin/updateUser/";
+  static const String deleteOneUser = "/admin/deleteOneUser/";
 
   static const String addAProduct = '/product/addAProduct';
   static const String updateAProduct = "/product/updateAProduct";

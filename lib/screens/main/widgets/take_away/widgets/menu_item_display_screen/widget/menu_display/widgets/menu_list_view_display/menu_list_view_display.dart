@@ -19,7 +19,7 @@ class MenuListViewDisplay extends StatelessWidget {
       builder: (context, constraints) {
         final width = constraints.widthConstraints().maxWidth;
 
-        printError(width.toString());
+
 
         return GridView.count(
           crossAxisCount: width >= 600

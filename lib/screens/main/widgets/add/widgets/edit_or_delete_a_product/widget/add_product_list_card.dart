@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/add/add_bloc.dart';
 import 'package:pos_mini/models/product/product.dart';
-import 'package:pos_mini/screens/main/widgets/add/widgets/add_category_screen/add_category_screen.dart';
 import 'package:pos_mini/screens/main/widgets/add/widgets/edit_or_delete_a_product/edit_product_screen/edit_product_main_screen.dart';
+import 'package:pos_mini/screens/ui_util/pop_up_menu_button.dart';
 
 
 class AddProductListCard extends StatelessWidget {

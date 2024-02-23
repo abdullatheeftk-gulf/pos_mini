@@ -5,6 +5,7 @@ import 'package:pos_mini/models/category/category.dart';
 import 'package:pos_mini/screens/main/widgets/add/widgets/add_category_screen/widget/add_category_alert_dialog.dart';
 import 'package:pos_mini/screens/main/widgets/add/widgets/add_category_screen/widget/edit_category_alert_dialog.dart';
 import 'package:pos_mini/screens/main/widgets/add/widgets/add_category_screen/widget/error_text_widget.dart';
+import 'package:pos_mini/screens/ui_util/pop_up_menu_button.dart';
 import 'package:pos_mini/util/api_error/api_error.dart';
 
 class AddCategoryScreen extends StatefulWidget {
@@ -32,8 +33,10 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
     );
   }
 
-  void _showEditCategoryDialog(Category category) async{
-    await showDialog(context: context, builder: (_)=>EditCategoryAlertDialog(category: category));
+  void _showEditCategoryDialog(Category category) async {
+    await showDialog(
+        context: context,
+        builder: (_) => EditCategoryAlertDialog(category: category));
   }
 
   @override
@@ -111,14 +114,20 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                                           flex: 1,
                                           child:
                                               PopupMenuButton<PopUpMenuButton>(
-                                                onSelected: (cb){
-                                                  if(cb.name == PopUpMenuButton.edit.name){
-                                                     _showEditCategoryDialog(_categories[index]);
-                                                  }
-                                                  if(cb.name == PopUpMenuButton.delete.name){
-                                                    context.read<AddBloc>().add(AddDeleteACategoryEvent(category: _categories[index]));
-                                                  }
-                                                },
+                                            onSelected: (cb) {
+                                              if (cb.name ==
+                                                  PopUpMenuButton.edit.name) {
+                                                _showEditCategoryDialog(
+                                                    _categories[index]);
+                                              }
+                                              if (cb.name ==
+                                                  PopUpMenuButton.delete.name) {
+                                                context.read<AddBloc>().add(
+                                                    AddDeleteACategoryEvent(
+                                                        category: _categories[
+                                                            index]));
+                                              }
+                                            },
                                             itemBuilder:
                                                 (BuildContext context) {
                                               return <PopupMenuEntry<
@@ -129,7 +138,7 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                                                   child: Text(
                                                     "Edit",
                                                     style: TextStyle(
-                                                        color: Colors.blue,
+                                                      color: Colors.blue,
                                                     ),
                                                   ),
                                                 ),
@@ -167,5 +176,3 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
     );
   }
 }
-
-enum PopUpMenuButton { edit, delete }

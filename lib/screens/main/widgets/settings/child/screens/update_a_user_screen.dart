@@ -1,19 +1,19 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pos_mini/blocs/settings/add_user/add_user_cubit.dart';
+import 'package:pos_mini/blocs/settings/update_user/update_user_cubit.dart';
 import 'package:pos_mini/models/user/user.dart';
 import 'package:pos_mini/screens/ui_util/hide_key_board.dart';
 
+class UpdateAUserScreen extends StatefulWidget {
+  final User user;
 
-class AddUserScreen extends StatefulWidget {
-  const AddUserScreen({super.key});
+  const UpdateAUserScreen({super.key, required this.user});
 
   @override
-  State<AddUserScreen> createState() => _AddUserScreenState();
+  State<UpdateAUserScreen> createState() => _UpdateAUserScreenState();
 }
 
-class _AddUserScreenState extends State<AddUserScreen>  {
+class _UpdateAUserScreenState extends State<UpdateAUserScreen> {
   final _userNameController = TextEditingController();
   final _userPasswordController = TextEditingController();
 
@@ -22,12 +22,12 @@ class _AddUserScreenState extends State<AddUserScreen>  {
 
   final _formKey = GlobalKey<FormState>();
 
-  void _showSuccessAlertDialog() {
+  void _showUpdateSuccessAlertDialog() {
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text("User added Successfully"),
+          title: const Text("User updated Successfully"),
           titleTextStyle: TextStyle(
             color: Theme.of(context).primaryColor,
             fontSize: 24,
@@ -35,7 +35,7 @@ class _AddUserScreenState extends State<AddUserScreen>  {
           actions: [
             ElevatedButton(
               onPressed: () {
-                context.read<AddUserCubit>().onAlertDialogButtonPressed();
+                context.read<UpdateUserCubit>().popUpBack();
                 Navigator.pop(context);
               },
               child: const Text("Ok"),
@@ -47,6 +47,14 @@ class _AddUserScreenState extends State<AddUserScreen>  {
   }
 
   @override
+  void initState() {
+    _userNameController.text = widget.user.userName ?? "";
+    _userPasswordController.text = widget.user.userPassword;
+
+    super.initState();
+  }
+
+  @override
   void dispose() {
     _userNameController.dispose();
     _userPasswordController.dispose();
@@ -55,21 +63,15 @@ class _AddUserScreenState extends State<AddUserScreen>  {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AddUserCubit, AddUserState>(
+    return BlocConsumer<UpdateUserCubit, UpdateUserState>(
       listenWhen: (prev, cur) {
-        if (cur is AddUserUiActionState) {
+        if (cur is UpdateUserUiActionState) {
           return true;
         }
         return false;
       },
       listener: (context, state) {
-        if (state is AddUserPopNavigateBackState) {
-          Navigator.pop(context);
-        }
-        if (state is AddUserSuccessAlertDialog) {
-          _showSuccessAlertDialog();
-        }
-        if (state is AddUserApiFetchingFailedState) {
+        if (state is UpdateUserApiFetchingFailedState) {
           final apiError = state.apiError;
           final errorMessage =
               "${apiError.errorCode}, ${apiError.errorData}, ${apiError.errorMessage}";
@@ -80,33 +82,40 @@ class _AddUserScreenState extends State<AddUserScreen>  {
             ),
           );
         }
+        if (state is UpdateUserShowSuccessAlertDialogState) {
+          _showUpdateSuccessAlertDialog();
+        }
+
+        if (state is UpdateUserPopUpBackState) {
+          Navigator.pop(context);
+        }
       },
       buildWhen: (prev, cur) {
-        if (cur is AddUserUiBuildState) {
+        if (cur is UpdateUserUiBuildState) {
           return true;
         }
         return false;
       },
       builder: (context, state) {
-        if (state is AddUserShowProgressIndicatorState) {
-          _showProgressBar = true;
+        if (state is UpdateUserShowProgressBarState) {
           _errorMessage = null;
+          _showProgressBar = true;
         }
 
-        if (state is AddUserSuccessState) {
+        if (state is UpdateUserSuccessState) {
           _showProgressBar = false;
           _errorMessage = null;
         }
 
-        if (state is AddUserFailedState) {
+        if (state is UpdateUserFailedState) {
           _showProgressBar = false;
           final apiError = state.apiError;
-          _errorMessage = "${apiError.errorData}, ${apiError.errorMessage}";
+          _errorMessage = "${apiError.errorMessage},${apiError.errorData}";
         }
 
         return Scaffold(
           appBar: AppBar(
-            title: const Text("Add User"),
+            title: Text("Update ${widget.user.userName}"),
           ),
           floatingActionButton: _showProgressBar
               ? const CircularProgressIndicator()
@@ -117,6 +126,7 @@ class _AddUserScreenState extends State<AddUserScreen>  {
             builder: (BuildContext context, BoxConstraints constraints) {
               final screenWidth = constraints.widthConstraints().maxWidth;
               final width = (screenWidth >= 600) ? 600.0 : screenWidth;
+
               return Center(
                 child: SizedBox(
                   height: double.infinity,
@@ -154,7 +164,7 @@ class _AddUserScreenState extends State<AddUserScreen>  {
                               border: const OutlineInputBorder(),
                             ),
                             validator: (value) {
-                              if (value!.isEmpty || value.length<3) {
+                              if (value!.isEmpty || value.length < 3) {
                                 return "Enter valid password";
                               }
                               return null;
@@ -179,17 +189,21 @@ class _AddUserScreenState extends State<AddUserScreen>  {
 
                               if (_formKey.currentState!.validate()) {
                                 final user = User(
+                                  userId: widget.user.userId,
                                   userPassword:
                                       _userPasswordController.text.trim(),
                                   userName: _userNameController.text.trim(),
                                 );
-                                context.read<AddUserCubit>().addUser(user);
+                                context.read<UpdateUserCubit>().updateAUser(
+                                      oldPassword: widget.user.userPassword,
+                                      user: user,
+                                    );
                               }
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Theme.of(context).primaryColor,
                                 foregroundColor: Colors.white),
-                            child: const Text("Add"),
+                            child: const Text("Update"),
                           )
                         ],
                       ),
@@ -203,6 +217,4 @@ class _AddUserScreenState extends State<AddUserScreen>  {
       },
     );
   }
-
-
 }

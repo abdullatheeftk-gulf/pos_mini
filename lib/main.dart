@@ -6,6 +6,7 @@ import 'package:pos_mini/blocs/add/edit_product/edit_product_cubit.dart';
 import 'package:pos_mini/blocs/admin_login/admin_login_bloc.dart';
 import 'package:pos_mini/blocs/main/main_bloc.dart';
 import 'package:pos_mini/blocs/settings/add_user/add_user_cubit.dart';
+import 'package:pos_mini/blocs/settings/update_user/update_user_cubit.dart';
 import 'package:pos_mini/blocs/splash/splash_bloc.dart';
 import 'package:pos_mini/blocs/take_away/take_away_bloc.dart';
 import 'package:pos_mini/blocs/url/url_bloc.dart';
@@ -14,7 +15,11 @@ import 'package:pos_mini/repository/api_repository/api_repository.dart';
 import 'package:pos_mini/repository/shared_preferences_repository.dart';
 import 'package:pos_mini/screens/splash/splash_screen.dart';
 
+import 'blocs/settings/get_all_users/get_all_users_cubit.dart';
+
 final Dio dio = Dio();
+
+final RouteObserver<PageRoute> routeObserver = RouteObserver();
 
 void main() async {
   runApp(const MyApp());
@@ -81,6 +86,16 @@ class MyApp extends StatelessWidget {
               apiRepository: context.read<ApiRepository>(),
             ),
           ),
+          BlocProvider(
+            create: (context) => GetAllUsersCubit(
+              apiRepository: context.read<ApiRepository>(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => UpdateUserCubit(
+              apiRepository: context.read<ApiRepository>(),
+            ),
+          ),
         ],
         child: MaterialApp(
           title: 'Unipos Pos Mini',
@@ -90,6 +105,8 @@ class MyApp extends StatelessWidget {
                 seedColor: const Color.fromARGB(255, 0, 26, 51)),
             useMaterial3: true,
           ),
+          navigatorObservers: [routeObserver],
+
           home: const SplashScreen(),
         ),
       ),
