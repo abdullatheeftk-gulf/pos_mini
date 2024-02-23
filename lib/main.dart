@@ -5,6 +5,7 @@ import 'package:pos_mini/blocs/add/add_bloc.dart';
 import 'package:pos_mini/blocs/add/edit_product/edit_product_cubit.dart';
 import 'package:pos_mini/blocs/admin_login/admin_login_bloc.dart';
 import 'package:pos_mini/blocs/main/main_bloc.dart';
+import 'package:pos_mini/blocs/settings/add_user/add_user_cubit.dart';
 import 'package:pos_mini/blocs/splash/splash_bloc.dart';
 import 'package:pos_mini/blocs/take_away/take_away_bloc.dart';
 import 'package:pos_mini/blocs/url/url_bloc.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             create: (context) => UrlBloc(
               sharedPreferencesRepository:
-              context.read<SharedPreferencesRepository>(),
+                  context.read<SharedPreferencesRepository>(),
               apiRepository: context.read<ApiRepository>(),
             ),
           ),
@@ -59,9 +60,7 @@ class MyApp extends StatelessWidget {
               apiRepository: context.read<ApiRepository>(),
             ),
           ),
-          BlocProvider(
-            create: (_) => MainBloc()
-          ),
+          BlocProvider(create: (_) => MainBloc()),
           BlocProvider(
             create: (context) => TakeAwayBloc(
               apiRepository: context.read<ApiRepository>(),
@@ -72,15 +71,23 @@ class MyApp extends StatelessWidget {
               apiRepository: context.read<ApiRepository>(),
             ),
           ),
-          BlocProvider(create: (context) => EditProductCubit(
-            apiRepository: context.read<ApiRepository>(),
-          ),)
+          BlocProvider(
+            create: (context) => EditProductCubit(
+              apiRepository: context.read<ApiRepository>(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => AddUserCubit(
+              apiRepository: context.read<ApiRepository>(),
+            ),
+          ),
         ],
         child: MaterialApp(
           title: 'Unipos Pos Mini',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 0, 26, 51)),
+            colorScheme: ColorScheme.fromSeed(
+                seedColor: const Color.fromARGB(255, 0, 26, 51)),
             useMaterial3: true,
           ),
           home: const SplashScreen(),
@@ -89,5 +96,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-

@@ -29,10 +29,14 @@ part 'category_repository.dart';
 
 part 'product_repository.dart';
 
+part 'settings_repository.dart';
+
 class ApiRepository
     with
         SplashRepositoryMixin,
         LoginRepositoryMixin,
         TakeAwayRepositoryMixin,
         CategoryRepository,
-        ProductRepository {}
+        ProductRepository,
+        SettingsRepository
+{}
