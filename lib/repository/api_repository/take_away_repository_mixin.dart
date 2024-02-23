@@ -14,20 +14,20 @@ mixin TakeAwayRepositoryMixin {
         return result;
       }
 
-      return ApiError(
+      return const ApiError(
         errorCode: Constants.connectionTimeOutErrorCode,
         errorMessage: "Unknown response",
       );
     } on DioException catch (e) {
       if (e.type == DioExceptionType.connectionTimeout) {
-        return ApiError(
+        return const ApiError(
             errorCode: Constants.connectionTimeOutErrorCode,
             errorMessage:
                 "Connection time out. either server down or network is not available");
       }
 
       if (e.type == DioExceptionType.connectionError) {
-        return ApiError(
+        return const ApiError(
           errorCode: Constants.networkErrorCode,
           errorMessage: "check network",
         );

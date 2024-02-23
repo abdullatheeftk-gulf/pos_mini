@@ -233,6 +233,8 @@ mixin ProductRepository {
 
       final response = await http.post(url);
 
+      printDebug(response.body);
+      printWarning("${response.statusCode}");
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         return data['data']['translations'][0]['translatedText'];
@@ -242,6 +244,7 @@ mixin ProductRepository {
         errorMessage: "Unknown response",
       );
     } on DioException catch (e) {
+      printError(e.message ?? "there have some problem");
       if (e.type == DioExceptionType.connectionTimeout) {
         return const ApiError(
             errorCode: Constants.connectionTimeOutErrorCode,
@@ -266,6 +269,7 @@ mixin ProductRepository {
           errorCode: Constants.jsonConvertException,
           errorMessage: "Json Convert Exception - ${e.toString()}");
     } catch (e) {
+      printError(e.toString());
       return ApiError(
           errorCode: Constants.generalErrorCode, errorMessage: e.toString());
     }

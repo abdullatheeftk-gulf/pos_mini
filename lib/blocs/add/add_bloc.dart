@@ -7,6 +7,7 @@ import 'package:pos_mini/models/category/category.dart';
 import 'package:pos_mini/models/product/product.dart';
 import 'package:pos_mini/repository/api_repository/api_repository.dart';
 import 'package:pos_mini/util/api_error/api_error.dart';
+import 'package:pos_mini/util/log_functions/log_functions.dart';
 import 'package:pos_mini/util/pair.dart';
 
 part 'add_event.dart';
@@ -228,10 +229,13 @@ class AddBloc extends Bloc<AddEvent, AddState> {
     final result = await apiRepository.googleTranslate(event.text);
 
     if (result is ApiError) {
+      printError("result is $result");
       emit(AddApiFetchingFailedState(apiError: result));
       emit(AddProductFailedUiState(apiError: result));
       return;
     }
+
+    printDebug("No error $result");
 
     emit(AddTranslateSuccessState(text: result));
   }

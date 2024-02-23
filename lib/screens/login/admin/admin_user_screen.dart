@@ -62,7 +62,7 @@ class _AdminUserScreenState extends State<AdminUserScreen> {
             if (state is AdminLoginNavigateToMainScreenState) {
               Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (context) => const MainScreen()),
+                MaterialPageRoute(builder: (context) => const MainScreen(isAdminLogin: true,)),
                 (route) => false,
               );
             }

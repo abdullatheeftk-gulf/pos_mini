@@ -7,7 +7,8 @@ import 'package:pos_mini/screens/main/widgets/get_body_widget/get_body_widget.da
 import '../../util/pair.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  final bool isAdminLogin;
+  const MainScreen({super.key, required this.isAdminLogin});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -21,7 +22,7 @@ class _MainScreenState extends State<MainScreen> {
     Pair(first: 'Table', second: 'table.png'),
     Pair(first: 'Edit', second: 'edit.png'),
     Pair(first: 'Add', second: 'add_product.png'),
-    Pair(first: 'Setting', second: 'setting.png'),
+    Pair(first: 'Settings', second: 'setting.png'),
   ];
 
 
@@ -42,7 +43,6 @@ class _MainScreenState extends State<MainScreen> {
             return false;
           },
           buildWhen: (prev,cur){
-            //Todo
             if(cur is MainScreenNavigationMenuItemClickedState){
               return true;
             }
@@ -72,7 +72,7 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                 ),
               ),
-              body: getBodyWidget(context: context, selectedMenu: _selectedDrawerMenuItem)
+              body: getBodyWidget(context: context, selectedMenu: _selectedDrawerMenuItem,isAdminLogin: widget.isAdminLogin)
             );
           },
         );

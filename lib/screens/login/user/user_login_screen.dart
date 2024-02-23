@@ -56,7 +56,7 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const MainScreen(),
+                  builder: (context) => const MainScreen(isAdminLogin: false,),
                 ),
               );
             }
