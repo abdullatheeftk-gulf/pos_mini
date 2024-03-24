@@ -24,7 +24,7 @@ final class TakeAwayOnProductSearchButtonClickedEvent extends TakeAwayEvent{
 }
 
 final class TakeAwayOnProductAddedToCartEvent extends TakeAwayEvent{
-  final Product product;
+  final FoodItem product;
   final double qty;
   final String? note;
 

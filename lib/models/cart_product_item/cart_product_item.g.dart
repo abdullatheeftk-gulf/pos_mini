@@ -15,7 +15,7 @@ _$CartProductItemImpl _$$CartProductItemImplFromJson(
       cartProductLocalName: json['cartProductLocalName'] as String? ?? null,
       product: json['product'] == null
           ? null
-          : Product.fromJson(json['product'] as Map<String, dynamic>),
+          : FoodItem.fromJson(json['product'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$CartProductItemImplToJson(

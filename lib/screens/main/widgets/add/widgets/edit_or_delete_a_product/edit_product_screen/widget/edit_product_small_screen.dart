@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/add/edit_product/edit_product_cubit.dart';
 import 'package:pos_mini/models/category/category.dart';
-import 'package:pos_mini/models/product/product.dart';
+import 'package:pos_mini/models/food_item/food_item.dart';
 import 'package:pos_mini/screens/ui_util/hide_key_board.dart';
 import 'package:pos_mini/util/api_error/api_error.dart';
 import 'package:pos_mini/util/pair.dart';
@@ -11,7 +11,7 @@ import 'package:pos_mini/util/triple.dart';
 import 'edit_product_check_box_for_category_display.dart';
 
 class EditProductSmallScreen extends StatefulWidget {
-  final Product product;
+  final FoodItem product;
 
   final Function callBack;
 
@@ -186,13 +186,13 @@ class _EditProductSmallScreenState extends State<EditProductSmallScreen> {
   void initState() {
     context
         .read<EditProductCubit>()
-        .getAllCategoriesAndSelectedCategories(widget.product.productId);
+        .getAllCategoriesAndSelectedCategories(widget.product.foodItemId);
 
-    _productNameController.text = widget.product.productName;
-    _productLocalNameController.text = widget.product.productLocalName ?? "";
-    _productPriceController.text = widget.product.productPrice.toString();
+    _productNameController.text = widget.product.foodItemName;
+    _productLocalNameController.text = widget.product.foodItemName ?? "";
+    _productPriceController.text = widget.product.foodItemPrice.toString();
     _productTaxInPercentageController.text =
-        widget.product.productTaxInPercentage.toString();
+        widget.product.foodItemTaxInPercentage.toString();
     _infoController.text = widget.product.info ?? "";
 
     super.initState();
@@ -252,7 +252,7 @@ class _EditProductSmallScreenState extends State<EditProductSmallScreen> {
                 TextFormField(
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter valid product name';
+                      return 'Please enter valid food_item name';
                     }
                     return null;
                   },
@@ -334,12 +334,12 @@ class _EditProductSmallScreenState extends State<EditProductSmallScreen> {
                 TextFormField(
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter valid product price';
+                      return 'Please enter valid food_item price';
                     }
                     try {
                       double.parse(value);
                     } catch (e) {
-                      return 'Please enter valid product price in decimal';
+                      return 'Please enter valid food_item price in decimal';
                     }
                     return null;
                   },
@@ -363,12 +363,12 @@ class _EditProductSmallScreenState extends State<EditProductSmallScreen> {
                   controller: _productTaxInPercentageController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter valid product tax';
+                      return 'Please enter valid food_item tax';
                     }
                     try {
                       double.parse(value);
                     } catch (e) {
-                      return 'Please enter valid product tax in decimal';
+                      return 'Please enter valid food_item tax in decimal';
                     }
                     return null;
                   },
@@ -489,7 +489,7 @@ class _EditProductSmallScreenState extends State<EditProductSmallScreen> {
                   controller: _infoController,
                   decoration: InputDecoration(
                     label: const Text("Info"),
-                    hintText: "Enter product info",
+                    hintText: "Enter food_item info",
                     hintStyle: TextStyle(
                       color: Colors.black26.withAlpha(100),
                     ),

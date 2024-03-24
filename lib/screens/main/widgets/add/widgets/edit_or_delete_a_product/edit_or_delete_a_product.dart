@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/add/add_bloc.dart';
-import 'package:pos_mini/models/product/product.dart';
+import 'package:pos_mini/models/food_item/food_item.dart';
 import 'package:pos_mini/util/api_error/api_error.dart';
 
 import 'widget/add_product_list_card.dart';
@@ -17,7 +17,7 @@ class _EditOrDeleteAProductState extends State<EditOrDeleteAProduct> {
   bool _showProgressBar = false;
   ApiError? _apiError;
 
-  List<Product> _products = [];
+  List<FoodItem> _products = [];
 
   int _categoryId = -100;
 

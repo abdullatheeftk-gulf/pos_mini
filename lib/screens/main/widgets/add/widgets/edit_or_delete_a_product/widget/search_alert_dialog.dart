@@ -36,7 +36,7 @@ class _SearchAlertDialogState extends State<SearchAlertDialog> {
             controller: _searchTextController,
             decoration: InputDecoration(
               label: const Text("search"),
-              hintText: "Enter product name",
+              hintText: "Enter food_item name",
               hintStyle: TextStyle(color: Colors.black26.withAlpha(100)),
               border: const OutlineInputBorder(),
             ),

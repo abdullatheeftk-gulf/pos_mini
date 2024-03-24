@@ -97,25 +97,22 @@ mixin LoginRepositoryMixin {
   }
 
   Future<dynamic> updateAdminPassword(
-    AdminUser oldAdminUser,
     AdminUser newAdminUser,
   ) async {
     try {
-      final adminPasswordToReset = AdminPasswordToReset(
-        oldAdminUser: oldAdminUser,
-        newAdminUser: newAdminUser,
-      );
+
 
       final options =
           Options(headers: {Headers.contentTypeHeader: 'application/json'});
 
-      final data = jsonEncode(adminPasswordToReset.toJson());
+      final data = jsonEncode(newAdminUser.toJson());
 
       final response = await dio.put(Constants.updateAdminUser,
           options: options, data: data);
 
       if (response.statusCode == 200) {
         final data = response.data;
+        printError(data);
         return data;
       }
 

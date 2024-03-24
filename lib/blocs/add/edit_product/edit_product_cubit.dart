@@ -4,7 +4,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart' hide Category;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/models/category/category.dart';
-import 'package:pos_mini/models/product/product.dart';
+import 'package:pos_mini/models/food_item/food_item.dart';
 import 'package:pos_mini/repository/api_repository/api_repository.dart';
 import 'package:pos_mini/util/api_error/api_error.dart';
 import 'package:pos_mini/util/log_functions/log_functions.dart';
@@ -171,7 +171,7 @@ class EditProductCubit extends Cubit<EditProductState> {
   }
 
   void updateProduct(
-      Product product, Uint8List? imageByeArray, String? fileName) async {
+      FoodItem product, Uint8List? imageByeArray, String? fileName) async {
     emit(EditProductShowCircularProgressIndicatorState());
 
     final result = await apiRepository.updateAProduct(product);
@@ -188,7 +188,7 @@ class EditProductCubit extends Cubit<EditProductState> {
             await apiRepository.uploadProductImageAsByteArray(
           image: imageByeArray,
           fileName: fileName,
-          productId: product.productId,
+          foodItemId: product.foodItemId,
         );
 
         if (productPhotoUploadResult is ApiError) {
@@ -201,7 +201,7 @@ class EditProductCubit extends Cubit<EditProductState> {
 
     if(imageByeArray==null){
 
-      final imageRemoveResult = await apiRepository.removeAProductPhoto(product.productId);
+      final imageRemoveResult = await apiRepository.removeAProductPhoto(product.foodItemId);
       if(imageRemoveResult is ApiError){
         emit(EditProductApiFetchingFailedState(apiError: imageRemoveResult));
         emit(EditProductScreenErrorState(apiError: imageRemoveResult));

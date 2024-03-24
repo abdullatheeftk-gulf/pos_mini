@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/add/add_bloc.dart';
-import 'package:pos_mini/models/product/product.dart';
+import 'package:pos_mini/models/food_item/food_item.dart';
 import 'package:pos_mini/screens/main/widgets/add/widgets/edit_or_delete_a_product/edit_product_screen/edit_product_main_screen.dart';
 import 'package:pos_mini/screens/ui_util/pop_up_menu_button.dart';
 
 
 class AddProductListCard extends StatelessWidget {
-  final Product product;
+  final FoodItem product;
 
   final int categoryId;
 
@@ -26,7 +26,7 @@ class AddProductListCard extends StatelessWidget {
               Expanded(
                 flex: 5,
                 child: Text(
-                  product.productName,
+                  product.foodItemName,
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -39,7 +39,7 @@ class AddProductListCard extends StatelessWidget {
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>EditProductMainScreen(product: product)));
                     }
                     if(cb.name == PopUpMenuButton.delete.name){
-                      context.read<AddBloc>().add(DeleteAProductEvent(categoryId: categoryId,productId: product.productId));
+                      context.read<AddBloc>().add(DeleteAProductEvent(categoryId: categoryId,productId: product.foodItemId));
                       //context.read<AddBloc>().add(AddDeleteACategoryEvent(category: _categories[index]));
                     }
                   },

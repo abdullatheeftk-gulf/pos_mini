@@ -3,11 +3,12 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart' hide Category;
-import 'package:pos_mini/models/admin_password_to_reset/admin_password_to_reset.dart';
 import 'package:pos_mini/models/admin_response/admin_response.dart';
 import 'package:pos_mini/models/admin_user/admin_user.dart';
 import 'package:pos_mini/models/category/category.dart';
-import 'package:pos_mini/models/product/product.dart';
+import 'package:pos_mini/models/dine_in/area/dine_in_area.dart';
+import 'package:pos_mini/models/food_item/food_item.dart';
+
 import 'package:pos_mini/models/tran_response/tran_response.dart';
 import 'package:pos_mini/models/user/user.dart';
 import 'package:pos_mini/models/user_response/user_response.dart';
@@ -31,6 +32,8 @@ part 'product_repository.dart';
 
 part 'settings_repository.dart';
 
+part 'dine_area_repository.dart';
+
 class ApiRepository
     with
         SplashRepositoryMixin,
@@ -38,5 +41,6 @@ class ApiRepository
         TakeAwayRepositoryMixin,
         CategoryRepository,
         ProductRepository,
-        SettingsRepository
+        SettingsRepository,
+        DineAreaRepository
 {}

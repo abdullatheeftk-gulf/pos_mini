@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pos_mini/screens/main/widgets/settings/child/screens/add_user_screen.dart';
+import 'package:pos_mini/screens/main/widgets/settings/child/screens/reset_admin_password_screen/reset_admin_password_screen.dart';
 import 'package:pos_mini/screens/main/widgets/settings/child/screens/show_all_users_screen.dart';
 
 class AdminTextButtons extends StatelessWidget {
@@ -51,7 +52,8 @@ class AdminTextButtons extends StatelessWidget {
             ),
           ),
           onTap: () {
-            // Todo
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>const ResetAdminPasswordScreen()));
+
           },
         ),
       ],

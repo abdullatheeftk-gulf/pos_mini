@@ -25,7 +25,7 @@ mixin _$CartProductItem {
   String? get note => throw _privateConstructorUsedError;
   String get cartProductName => throw _privateConstructorUsedError;
   String? get cartProductLocalName => throw _privateConstructorUsedError;
-  Product? get product => throw _privateConstructorUsedError;
+  FoodItem? get product => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,9 +44,9 @@ abstract class $CartProductItemCopyWith<$Res> {
       String? note,
       String cartProductName,
       String? cartProductLocalName,
-      Product? product});
+      FoodItem? product});
 
-  $ProductCopyWith<$Res>? get product;
+  $FoodItemCopyWith<$Res>? get product;
 }
 
 /// @nodoc
@@ -88,18 +88,18 @@ class _$CartProductItemCopyWithImpl<$Res, $Val extends CartProductItem>
       product: freezed == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
-              as Product?,
+              as FoodItem?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ProductCopyWith<$Res>? get product {
+  $FoodItemCopyWith<$Res>? get product {
     if (_value.product == null) {
       return null;
     }
 
-    return $ProductCopyWith<$Res>(_value.product!, (value) {
+    return $FoodItemCopyWith<$Res>(_value.product!, (value) {
       return _then(_value.copyWith(product: value) as $Val);
     });
   }
@@ -118,10 +118,10 @@ abstract class _$$CartProductItemImplCopyWith<$Res>
       String? note,
       String cartProductName,
       String? cartProductLocalName,
-      Product? product});
+      FoodItem? product});
 
   @override
-  $ProductCopyWith<$Res>? get product;
+  $FoodItemCopyWith<$Res>? get product;
 }
 
 /// @nodoc
@@ -161,7 +161,7 @@ class __$$CartProductItemImplCopyWithImpl<$Res>
       product: freezed == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
-              as Product?,
+              as FoodItem?,
     ));
   }
 }
@@ -191,7 +191,7 @@ class _$CartProductItemImpl implements _CartProductItem {
   @JsonKey()
   final String? cartProductLocalName;
   @override
-  final Product? product;
+  final FoodItem? product;
 
   @override
   String toString() {
@@ -238,7 +238,7 @@ abstract class _CartProductItem implements CartProductItem {
       final String? note,
       required final String cartProductName,
       final String? cartProductLocalName,
-      required final Product? product}) = _$CartProductItemImpl;
+      required final FoodItem? product}) = _$CartProductItemImpl;
 
   factory _CartProductItem.fromJson(Map<String, dynamic> json) =
       _$CartProductItemImpl.fromJson;
@@ -253,7 +253,7 @@ abstract class _CartProductItem implements CartProductItem {
   @override
   String? get cartProductLocalName;
   @override
-  Product? get product;
+  FoodItem? get product;
   @override
   @JsonKey(ignore: true)
   _$$CartProductItemImplCopyWith<_$CartProductItemImpl> get copyWith =>

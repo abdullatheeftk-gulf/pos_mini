@@ -5,13 +5,17 @@ import 'package:pos_mini/blocs/add/add_bloc.dart';
 import 'package:pos_mini/blocs/add/edit_product/edit_product_cubit.dart';
 import 'package:pos_mini/blocs/admin_login/admin_login_bloc.dart';
 import 'package:pos_mini/blocs/main/main_bloc.dart';
+import 'package:pos_mini/blocs/reset_admin_password/reset_admin_password_cubit.dart';
 import 'package:pos_mini/blocs/settings/add_user/add_user_cubit.dart';
+import 'package:pos_mini/blocs/settings/change_base_url/change_base_url_cubit.dart';
+import 'package:pos_mini/blocs/settings/logout_bloc/logout_cubit.dart';
 import 'package:pos_mini/blocs/settings/update_user/update_user_cubit.dart';
 import 'package:pos_mini/blocs/splash/splash_bloc.dart';
 import 'package:pos_mini/blocs/take_away/take_away_bloc.dart';
 import 'package:pos_mini/blocs/url/url_bloc.dart';
 import 'package:pos_mini/blocs/user_login/user_login_bloc.dart';
 import 'package:pos_mini/repository/api_repository/api_repository.dart';
+import 'package:pos_mini/repository/shared_data_repository/shared_data_repository.dart';
 import 'package:pos_mini/repository/shared_preferences_repository.dart';
 import 'package:pos_mini/screens/splash/splash_screen.dart';
 
@@ -33,11 +37,14 @@ class MyApp extends StatelessWidget {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider(
-          create: (context) => SharedPreferencesRepository(),
+          create: (_) => SharedPreferencesRepository(),
         ),
         RepositoryProvider(
-          create: (context) => ApiRepository(),
+          create: (_) => ApiRepository(),
         ),
+        RepositoryProvider(
+          create: (_) => SharedDataRepository(),
+        )
       ],
       child: MultiBlocProvider(
         providers: [
@@ -62,8 +69,8 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => AdminLoginBloc(
-              apiRepository: context.read<ApiRepository>(),
-            ),
+                apiRepository: context.read<ApiRepository>(),
+                sharedDataRepository: context.read<SharedDataRepository>()),
           ),
           BlocProvider(create: (_) => MainBloc()),
           BlocProvider(
@@ -96,6 +103,20 @@ class MyApp extends StatelessWidget {
               apiRepository: context.read<ApiRepository>(),
             ),
           ),
+          BlocProvider(
+            create: (context) => ResetAdminPasswordCubit(
+              apiRepository: context.read<ApiRepository>(),
+              sharedDataRepository: context.read<SharedDataRepository>(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => ChangeBaseUrlCubit(
+              apiRepository: context.read<ApiRepository>(),
+            ),
+          ),
+          BlocProvider(
+            create: (_) => LogoutCubit(),
+          ),
         ],
         child: MaterialApp(
           title: 'Unipos Pos Mini',
@@ -106,7 +127,6 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           navigatorObservers: [routeObserver],
-
           home: const SplashScreen(),
         ),
       ),

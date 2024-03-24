@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/models/admin_user/admin_user.dart';
 import 'package:pos_mini/repository/api_repository/api_repository.dart';
+import 'package:pos_mini/repository/shared_data_repository/shared_data_repository.dart';
 import 'package:pos_mini/util/api_error/api_error.dart';
 
 part 'admin_login_event.dart';
@@ -12,8 +13,9 @@ part 'admin_login_state.dart';
 
 class AdminLoginBloc extends Bloc<AdminLoginEvent, AdminLoginState> {
   final ApiRepository apiRepository;
+  final SharedDataRepository sharedDataRepository;
 
-  AdminLoginBloc({required this.apiRepository})
+  AdminLoginBloc({required this.sharedDataRepository, required this.apiRepository})
       : super(AdminLoginInitialState()) {
 
     on<AdminLoginStartedEvent>(_adminLoginStartedEvent);
@@ -39,11 +41,12 @@ class AdminLoginBloc extends Bloc<AdminLoginEvent, AdminLoginState> {
       return;
     }
 
-    // Todo
+
 
     if (adminPassword == "741") {
       emit(AdminShowChangePasswordAlertDialog());
     } else {
+      sharedDataRepository.setAdminPassword(adminPassword);
       emit(AdminLoginNavigateToMainScreenState());
     }
 
@@ -56,7 +59,7 @@ class AdminLoginBloc extends Bloc<AdminLoginEvent, AdminLoginState> {
     final oldAdminUser = event.oldAdminUser;
     final newAdminUser = event.newAdminUser;
 
-    final response = await apiRepository.updateAdminPassword(oldAdminUser, newAdminUser);
+    final response = await apiRepository.updateAdminPassword( newAdminUser);
 
     if(response is ApiError){
         emit(AdminPasswordResetFailedState(apiError: response));
@@ -64,6 +67,8 @@ class AdminLoginBloc extends Bloc<AdminLoginEvent, AdminLoginState> {
         emit(AdminLoginActionFailedState(apiError: response));
         return;
     }
+
+     sharedDataRepository.setAdminPassword(newAdminUser.adminPassword);
 
     emit(AdminLoginNavigateToMainScreenState());
 

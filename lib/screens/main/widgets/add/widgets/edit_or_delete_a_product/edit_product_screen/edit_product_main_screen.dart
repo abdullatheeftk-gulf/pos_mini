@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/add/edit_product/edit_product_cubit.dart';
 import 'package:pos_mini/main.dart';
-import 'package:pos_mini/models/product/product.dart';
+import 'package:pos_mini/models/food_item/food_item.dart';
 import 'package:pos_mini/screens/main/widgets/add/widgets/edit_or_delete_a_product/edit_product_screen/widget/edit_product_big_screen.dart';
 import 'package:pos_mini/screens/main/widgets/add/widgets/edit_or_delete_a_product/edit_product_screen/widget/edit_product_small_screen.dart';
 import 'package:pos_mini/util/api_error/api_error.dart';
@@ -14,7 +14,7 @@ import 'package:pos_mini/util/log_functions/log_functions.dart';
 import 'package:pos_mini/util/pair.dart';
 
 class EditProductMainScreen extends StatefulWidget {
-  final Product product;
+  final FoodItem product;
 
   const EditProductMainScreen({super.key, required this.product});
 
@@ -31,11 +31,11 @@ class _EditProductMainScreenState extends State<EditProductMainScreen> {
 
   @override
   void initState() {
-    if (widget.product.productImage != null) {
-      if (widget.product.productImage!.isNotEmpty) {
+    if (widget.product.foodItemImage != null) {
+      if (widget.product.foodItemImage!.isNotEmpty) {
         context
             .read<EditProductCubit>()
-            .getAProductPhotoByteArray(widget.product.productImage!);
+            .getAProductPhotoByteArray(widget.product.foodItemImage!);
       }
     }
     super.initState();
@@ -108,7 +108,7 @@ class _EditProductMainScreenState extends State<EditProductMainScreen> {
               children: [
                 const Text("Edit "),
                 Text(
-                  widget.product.productName,
+                  widget.product.foodItemName,
                   style: const TextStyle(color: Colors.deepPurple),
                 ),
               ],
@@ -260,16 +260,17 @@ class _EditProductMainScreenState extends State<EditProductMainScreen> {
                                   }
                                 }
 
-                                final product = Product(
-                                  productId: widget.product.productId,
-                                  productName: productName,
-                                  productLocalName: productLocalName,
-                                  productPrice: double.parse(productPrice),
-                                  productTaxInPercentage:
+                                final product = FoodItem(
+                                  foodItemId: widget.product.foodItemId,
+                                  foodItemName: productName,
+                                  foodItemLocalName: productLocalName,
+                                  foodItemPrice: double.parse(productPrice),
+                                  foodItemTaxInPercentage:
                                       double.parse(productTaxInPercentage),
                                   categories: categories,
                                   info: info,
-                                  productImage: widget.product.productImage,
+                                  foodItemImage: widget.product.foodItemImage,
+                                  barcode: ""
                                 );
 
                                 context.read<EditProductCubit>().updateProduct(
@@ -296,16 +297,17 @@ class _EditProductMainScreenState extends State<EditProductMainScreen> {
                                   }
                                 }
 
-                                final product = Product(
-                                  productId: widget.product.productId,
-                                  productName: productName,
-                                  productLocalName: productLocalName,
-                                  productPrice: double.parse(productPrice),
-                                  productTaxInPercentage:
+                                final product = FoodItem(
+                                  foodItemId: widget.product.foodItemId,
+                                  foodItemName: productName,
+                                  foodItemLocalName: productLocalName,
+                                  foodItemPrice: double.parse(productPrice),
+                                  foodItemTaxInPercentage:
                                       double.parse(productTaxInPercentage),
                                   categories: categories,
                                   info: info,
-                                  productImage: widget.product.productImage,
+                                  foodItemImage: widget.product.foodItemImage,
+                                  barcode: ""
                                 );
 
                                 context.read<EditProductCubit>().updateProduct(

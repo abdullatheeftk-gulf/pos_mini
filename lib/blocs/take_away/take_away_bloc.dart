@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart' hide Category;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/models/cart_product_item/cart_product_item.dart';
 import 'package:pos_mini/models/category/category.dart';
-import 'package:pos_mini/models/product/product.dart';
+import 'package:pos_mini/models/food_item/food_item.dart';
 import 'package:pos_mini/repository/api_repository/api_repository.dart';
 import 'package:pos_mini/screens/main/widgets/take_away/widgets/menu_item_display_screen/widget/menu_display/util/ProductView.dart';
 import 'package:pos_mini/util/api_error/api_error.dart';
@@ -77,7 +77,7 @@ class TakeAwayBloc extends Bloc<TakeAwayEvent, TakeAwayState> {
       emit(TakeAwayGetProductByCategoryFailedState(apiError: result));
       return;
     }
-    final products = result as List<Product>;
+    final products = result as List<FoodItem>;
     if (products.isEmpty) {
       emit(TakeAwayEmptyProductListState());
       return;
@@ -105,7 +105,7 @@ class TakeAwayBloc extends Bloc<TakeAwayEvent, TakeAwayState> {
       emit(TakeAwayGetProductByCategoryFailedState(apiError: result));
       return;
     }
-    final products = result as List<Product>;
+    final products = result as List<FoodItem>;
     if (products.isEmpty) {
       emit(TakeAwayEmptyProductListState());
       return;
@@ -122,11 +122,11 @@ class TakeAwayBloc extends Bloc<TakeAwayEvent, TakeAwayState> {
     final cartProductItem = CartProductItem(
         qty: qty,
         note: note,
-        cartProductName: product.productName,
-        cartProductLocalName: product.productLocalName,
+        cartProductName: product.foodItemName,
+        cartProductLocalName: product.foodItemLocalName,
         product: product);
 
-    final price = qty * product.productPrice;
+    final price = qty * product.foodItemPrice;
     _total += price;
     _cartProductItems.add(cartProductItem);
 
@@ -151,7 +151,7 @@ class TakeAwayBloc extends Bloc<TakeAwayEvent, TakeAwayState> {
     // To update badge
     emit(TakeAwayShowBadgeCountState(count: _cartProductItems.length));
 
-    // To update product list
+    // To update food_item list
     emit(TakeAwayShowCartProductItemsState(
         cartProductItems: _cartProductItems, total: _total));
   }

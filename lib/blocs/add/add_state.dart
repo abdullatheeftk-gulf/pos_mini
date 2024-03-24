@@ -117,7 +117,7 @@ final class AddProductEditOrDeleteFailedState extends AddProductEditOrDeleteUiBu
 }
 
 final class AddProductGetProductForCategoriesState extends AddProductEditOrDeleteUiBuildStates{
-  final List<Product> products;
+  final List<FoodItem> products;
   final int categoryId;
 
   AddProductGetProductForCategoriesState({required this.categoryId, required this.products});

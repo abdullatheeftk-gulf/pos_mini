@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:pos_mini/models/product/product.dart';
 
 class SearchProductWidget extends StatefulWidget {
   const SearchProductWidget({super.key, required this.screenWidth, required this.onSearchButtonClicked});

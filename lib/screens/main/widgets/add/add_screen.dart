@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/add/add_bloc.dart';
+import 'package:pos_mini/screens/main/widgets/add/widgets/add_area/add_area_screen.dart';
 import 'package:pos_mini/screens/main/widgets/add/widgets/add_category_screen/add_category_screen.dart';
 import 'package:pos_mini/screens/main/widgets/add/widgets/add_product_screen/add_product_screen.dart';
 import 'package:pos_mini/screens/main/widgets/add/widgets/edit_or_delete_a_product/edit_or_delete_a_product.dart';
@@ -128,6 +129,36 @@ class _AddScreenState extends State<AddScreen> {
                           MaterialPageRoute(
                             builder: (context) =>
                                 const EditOrDeleteMainScreen(),
+                          ),
+                        );
+                      },
+                    ),
+                    InkWell(
+                      highlightColor: const Color.fromARGB(255, 0, 26, 51),
+                      child: Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: SizedBox(
+                          width: 100,
+                          height: 100,
+                          child: Card(
+                            elevation: 10,
+                            color: const Color.fromARGB(255, 99, 188, 39),
+                            child: Center(
+                              child: Text(
+                                "Dine In",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: textSize),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                            const AddAreaScreen(),
                           ),
                         );
                       },

@@ -64,7 +64,7 @@ final class AddTransliterateEvent extends AddEvent{
 }
 
 final class AddProductAddEvent extends AddEvent{
-  final Product product;
+  final FoodItem product;
   final File? file;
 
   AddProductAddEvent({required this.file, required this.product});

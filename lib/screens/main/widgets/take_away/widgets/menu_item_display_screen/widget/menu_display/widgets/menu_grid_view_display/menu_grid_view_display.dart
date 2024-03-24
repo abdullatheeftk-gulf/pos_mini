@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pos_mini/models/product/product.dart';
+import 'package:pos_mini/models/food_item/food_item.dart';
 import 'package:pos_mini/screens/main/widgets/take_away/widgets/menu_item_display_screen/widget/menu_display/widgets/menu_grid_view_display/widget/menu_grid_card.dart';
 
 class MenuGridViewDisplay extends StatelessWidget {
-  final List<Product> products;
+  final List<FoodItem> products;
   final Function callBackFunc;
 
   const MenuGridViewDisplay({
@@ -33,8 +33,8 @@ class MenuGridViewDisplay extends StatelessWidget {
           products.length,
           (index) => MenuGridCard(
             product: products[index],
-            productAddedEvent: (Product product) {
-              /*_showProductAddDialog(context, product);*/
+            productAddedEvent: (FoodItem product) {
+              /*_showProductAddDialog(context, food_item);*/
               callBackFunc(context, product);
             },
           ),

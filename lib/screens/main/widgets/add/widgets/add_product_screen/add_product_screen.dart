@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/add/add_bloc.dart';
 import 'package:pos_mini/models/category/category.dart';
-import 'package:pos_mini/models/product/product.dart';
+import 'package:pos_mini/models/food_item/food_item.dart';
 import 'package:pos_mini/screens/main/widgets/add/widgets/add_product_screen/widget/big_screen_product_add_screen.dart';
 import 'package:pos_mini/screens/main/widgets/add/widgets/add_product_screen/widget/small_screen_product_add_screen.dart';
 import 'package:pos_mini/screens/ui_util/show_floating_action_circular_progress_indicator.dart';
@@ -185,6 +185,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                               required List<Pair<int, String>>
                                   selectedCategories,
                               required String info,
+                              required String barcode
                             }) {
                               final List<int> categories = [];
                               for (var pair in selectedCategories) {
@@ -192,15 +193,16 @@ class _AddProductScreenState extends State<AddProductScreen> {
                                   categories.add(pair.first);
                                 }
                               }
-                              final Product product = Product(
-                                productId: 0,
-                                productName: productName,
-                                productLocalName: productLocalName,
-                                productPrice: double.parse(productPrice),
-                                productTaxInPercentage:
+                              final FoodItem product = FoodItem(
+                                foodItemId: 0,
+                                foodItemName: productName,
+                                foodItemLocalName: productLocalName,
+                                foodItemPrice: double.parse(productPrice),
+                                foodItemTaxInPercentage:
                                     double.parse(productTaxInPercentage),
                                 categories: categories,
                                 info: info,
+                                barcode: barcode
                               );
 
                               context.read<AddBloc>().add(
@@ -222,6 +224,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                               required List<Pair<int, String>>
                                   selectedCategories,
                               required String info,
+                              required String barcode
                             }) {
                               final List<int> categories = [];
                               for (var pair in selectedCategories) {
@@ -229,15 +232,16 @@ class _AddProductScreenState extends State<AddProductScreen> {
                                   categories.add(pair.first);
                                 }
                               }
-                              final Product product = Product(
-                                productId: 0,
-                                productName: productName,
-                                productLocalName: productLocalName,
-                                productPrice: double.parse(productPrice),
-                                productTaxInPercentage:
+                              final FoodItem product = FoodItem(
+                                foodItemId: 0,
+                                foodItemName: productName,
+                                foodItemLocalName: productLocalName,
+                                foodItemPrice: double.parse(productPrice),
+                                foodItemTaxInPercentage:
                                     double.parse(productTaxInPercentage),
                                 categories: categories,
                                 info: info,
+                                barcode: barcode
                               );
 
                               context.read<AddBloc>().add(

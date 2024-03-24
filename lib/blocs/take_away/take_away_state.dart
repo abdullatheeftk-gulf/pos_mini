@@ -46,7 +46,7 @@ final class TakeAwayOnCategoryClickedState extends TakeAwayCategoryUiState{
 
 // menu display widget
 final class TakeAwayGetProductByCategorySuccessState extends TakeAwayMenuDisplayWidgetUiBuildState{
-  final List<Product> products;
+  final List<FoodItem> products;
 
   TakeAwayGetProductByCategorySuccessState({required this.products});
 }
@@ -68,7 +68,7 @@ final class TakeAwayOnMenuModeSelectedState extends TakeAwayMenuDisplayWidgetUiB
 
   TakeAwayOnMenuModeSelectedState({required this.productView});
 }
-// menu display widget empty product list
+// menu display widget empty food_item list
 final class TakeAwayEmptyProductListState extends TakeAwayMenuDisplayWidgetUiBuildState{}
 
 

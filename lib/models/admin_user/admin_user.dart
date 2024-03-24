@@ -6,7 +6,7 @@ part 'admin_user.g.dart';
 @freezed
 class AdminUser with _$AdminUser {
   const factory AdminUser({
-    @Default(0) int adminId,
+    @Default(1) int adminId,
     required String adminName,
     required String adminPassword,
     required String licenseKey,

@@ -6,11 +6,11 @@ mixin TakeAwayRepositoryMixin {
   Future<dynamic> getProductByACategoryId(int categoryId) async {
     try {
       final response =
-          await dio.get("${Constants.getProductByACategory}/$categoryId");
+          await dio.get("${Constants.getFoodItemByACategory}/$categoryId");
 
       if (response.statusCode == 200) {
         final list = response.data as List<dynamic>;
-        final result = list.map((json) => Product.fromJson(json)).toList();
+        final result = list.map((json) => FoodItem.fromJson(json)).toList();
         return result;
       }
 

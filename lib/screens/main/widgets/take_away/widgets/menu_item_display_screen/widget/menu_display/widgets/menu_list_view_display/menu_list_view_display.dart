@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pos_mini/models/product/product.dart';
+import 'package:pos_mini/models/food_item/food_item.dart';
 import 'package:pos_mini/screens/main/widgets/take_away/widgets/menu_item_display_screen/widget/menu_display/widgets/menu_list_view_display/widget/menu_list_card.dart';
-import 'package:pos_mini/util/log_functions/log_functions.dart';
 
 class MenuListViewDisplay extends StatelessWidget {
-  final List<Product> products;
+  final List<FoodItem> products;
   final Function callBackFunc;
 
   const MenuListViewDisplay({
@@ -35,7 +34,7 @@ class MenuListViewDisplay extends StatelessWidget {
             products.length,
             (index) => MenuListCard(
               product: products[index],
-              productAddedEvent: (Product product) {
+              productAddedEvent: (FoodItem product) {
                 callBackFunc(context, product);
               },
             ),

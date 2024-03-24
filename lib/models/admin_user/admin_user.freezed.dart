@@ -151,7 +151,7 @@ class __$$AdminUserImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AdminUserImpl implements _AdminUser {
   const _$AdminUserImpl(
-      {this.adminId = 0,
+      {this.adminId = 1,
       required this.adminName,
       required this.adminPassword,
       required this.licenseKey,

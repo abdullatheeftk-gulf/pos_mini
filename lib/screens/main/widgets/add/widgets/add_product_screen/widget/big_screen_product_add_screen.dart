@@ -28,6 +28,7 @@ class _BigScreenProductAddScreenState extends State<BigScreenProductAddScreen> {
   final _productPriceController = TextEditingController();
   final _productTaxInPercentageController = TextEditingController(text: '0');
   final _infoController = TextEditingController();
+  final _barcodeController = TextEditingController();
 
   int _selectedRadio = 0;
 
@@ -57,6 +58,7 @@ class _BigScreenProductAddScreenState extends State<BigScreenProductAddScreen> {
     _productPriceController.dispose();
     _productTaxInPercentageController.dispose();
     _infoController.dispose();
+    _barcodeController.dispose();
 
     super.dispose();
   }
@@ -260,7 +262,7 @@ class _BigScreenProductAddScreenState extends State<BigScreenProductAddScreen> {
                       child: TextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please enter valid product name';
+                            return 'Please enter valid food_item name';
                           }
                           return null;
                         },
@@ -352,12 +354,12 @@ class _BigScreenProductAddScreenState extends State<BigScreenProductAddScreen> {
                       child: TextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please enter valid product price';
+                            return 'Please enter valid food_item price';
                           }
                           try {
                             double.parse(value);
                           } catch (e) {
-                            return 'Please enter valid product price in decimal';
+                            return 'Please enter valid food_item price in decimal';
                           }
                           return null;
                         },
@@ -380,12 +382,12 @@ class _BigScreenProductAddScreenState extends State<BigScreenProductAddScreen> {
                         controller: _productTaxInPercentageController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please enter valid product tax';
+                            return 'Please enter valid food_item tax';
                           }
                           try {
                             double.parse(value);
                           } catch (e) {
-                            return 'Please enter valid product tax in decimal';
+                            return 'Please enter valid food_item tax in decimal';
                           }
                           return null;
                         },
@@ -396,6 +398,29 @@ class _BigScreenProductAddScreenState extends State<BigScreenProductAddScreen> {
                             hintText: "Enter Product Tax in Percentage",
                             hintStyle:
                                 TextStyle(color: Colors.black26.withAlpha(100)),
+                            border: const OutlineInputBorder()),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        controller: _barcodeController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter valid barcode';
+                          }
+
+                          return null;
+                        },
+                        keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true),
+                        decoration: InputDecoration(
+                            label: const Text("Barcode"),
+                            hintText: "Enter Barcode",
+                            hintStyle:
+                            TextStyle(color: Colors.black26.withAlpha(100)),
                             border: const OutlineInputBorder()),
                       ),
                     ),
@@ -488,7 +513,7 @@ class _BigScreenProductAddScreenState extends State<BigScreenProductAddScreen> {
                   controller: _infoController,
                   decoration: InputDecoration(
                     label: const Text("Info"),
-                    hintText: "Enter product info",
+                    hintText: "Enter food_item info",
                     hintStyle: TextStyle(
                       color: Colors.black26.withAlpha(100),
                     ),
@@ -521,6 +546,7 @@ class _BigScreenProductAddScreenState extends State<BigScreenProductAddScreen> {
                                   _productTaxInPercentageController.text.trim(),
                               selectedCategories: _listOfSelectedCategories,
                               info: _infoController.text.trim(),
+                              barcode:_barcodeController.text.trim()
                             );
                           }
                         },

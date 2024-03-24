@@ -9,7 +9,7 @@ class Constants{
   static const String updateACategory = "/category/updateACategory";
   static const String deleteACategory = "/category/deleteACategory";
 
-  static const String getProductByACategory = '/product/getProductsByCategory';
+  static const String getFoodItemByACategory = '/foodItem/getFoodItemsByCategory';
 
   static const String userLogin = "/user/loginUser";
   static const String adminLogin = "/admin/loginAdminUser";
@@ -20,27 +20,31 @@ class Constants{
   static const String updateUser = "/admin/updateUser/";
   static const String deleteOneUser = "/admin/deleteOneUser/";
 
-  static const String addAProduct = '/product/addAProduct';
-  static const String updateAProduct = "/product/updateAProduct";
-  static const String deleteAProduct = "/product/deleteAProduct";
+  static const String addAFoodItem = '/foodItem/addAFoodItem';
+  static const String updateAFoodItem = "/foodItem/updateAFoodItem";
+  static const String deleteAFoodItem = "/foodItem/deleteAFoodItem";
 
   static const String transliterate = '/transliterate';
   static const String translate = '/translate';
 
+  // Dine in section
+  static const String getAllAreas = '/area/getAllAreas';
+  static const String addArea = '/area/add';
 
 
 
-  static const String addProductImage = '/product/addAProductPhoto';
-  static const String updateProductPhoto = '/product/updateProductPhoto';
-  static const String removeAProductPhoto = '/product/removeAProductPhoto';
+
+  static const String addFoodItemImage = '/foodItem/addAFoodItemPhoto';
+  static const String updateFoodItemPhoto = '/foodItem/updateFoodItemPhoto';
+  static const String removeAFoodItemPhoto = '/foodItem/removeAFoodItemPhoto';
 
 
 
-  static const String searchAProduct = '/product/searchAProduct';
+  static const String searchAFoodItem = '/foodItem/searchAFoodItem';
 
 
 
-  static const String getSelectedCategories = "/product/getSelectedCategories";
+  static const String getSelectedCategories = "/food_item/getSelectedCategories";
 
 
 

@@ -3,11 +3,11 @@ part of 'api_repository.dart';
 mixin ProductRepository {
   Future<dynamic> searchProduct(String search) async {
     try {
-      final response = await dio.get("${Constants.searchAProduct}/$search");
+      final response = await dio.get("${Constants.searchAFoodItem}/$search");
 
       if (response.statusCode == 200) {
         final list = response.data as List<dynamic>;
-        final result = list.map((json) => Product.fromJson(json)).toList();
+        final result = list.map((json) => FoodItem.fromJson(json)).toList();
         return result;
       }
 
@@ -45,11 +45,11 @@ mixin ProductRepository {
     }
   }
 
-  Future<dynamic> addAProduct(Product product) async {
+  Future<dynamic> addAProduct(FoodItem foodItem) async {
     try {
       final response = await dio.post(
-        Constants.addAProduct,
-        data: jsonEncode(product),
+        Constants.addAFoodItem,
+        data: jsonEncode(foodItem),
         options: Options(
           headers: {Headers.contentTypeHeader: 'application/json'},
         ),
@@ -94,14 +94,14 @@ mixin ProductRepository {
     }
   }
 
-  Future<dynamic> updateProductPhoto(int productId, File file) async {
+  Future<dynamic> updateProductPhoto(int foodItemId, File file) async {
     try {
       String fileName = file.path.split('/').last;
       FormData formData = FormData.fromMap({
         "file": await MultipartFile.fromFile(file.path, filename: fileName),
       });
       final result = await compute(
-          _uploadProductImage, [productId, formData, dio.options.baseUrl]);
+          _uploadProductImage, [foodItemId, formData, dio.options.baseUrl]);
 
       return result;
     } on DioException catch (e) {
@@ -134,11 +134,11 @@ mixin ProductRepository {
     }
   }
 
-  Future<dynamic> updateAProduct(Product product) async {
+  Future<dynamic> updateAProduct(FoodItem foodItem) async {
     try {
       final response = await dio.put(
-        Constants.updateAProduct,
-        data: jsonEncode(product),
+        Constants.updateAFoodItem,
+        data: jsonEncode(foodItem),
         options: Options(
           headers: {Headers.contentTypeHeader: 'application/json'},
         ),
@@ -182,9 +182,9 @@ mixin ProductRepository {
     }
   }
 
-  Future<dynamic> deleteAProduct(int productId) async {
+  Future<dynamic> deleteAProduct(int foodItemId) async {
     try {
-      final url = "${Constants.deleteAProduct}/$productId";
+      final url = "${Constants.deleteAFoodItem}/$foodItemId";
       final response = await dio.delete(url);
 
       if (response.statusCode == 200) {
@@ -329,7 +329,7 @@ mixin ProductRepository {
       final baseUrl = args[2] as String;
 
       final response = await dio.post(
-        '$baseUrl/${Constants.addProductImage}/$productId',
+        '$baseUrl/${Constants.addFoodItemImage}/$productId',
         data: formData,
         options: Options(
           headers: {Headers.contentTypeHeader: 'application/json'},
@@ -350,7 +350,7 @@ mixin ProductRepository {
   Future<dynamic> uploadProductImageAsByteArray({
     required Uint8List image,
     required String fileName,
-    required int productId,
+    required int foodItemId,
   }) async {
     try {
       final options = Options(contentType: "*/*");
@@ -358,7 +358,7 @@ mixin ProductRepository {
       final queryParameters = {"name": fileName};
 
       final response = await dio.post(
-        "${Constants.updateProductPhoto}/$productId",
+        "${Constants.updateFoodItemPhoto}/$foodItemId",
         options: options,
         data: image,
         queryParameters: queryParameters,
@@ -402,10 +402,10 @@ mixin ProductRepository {
     }
   }
 
-  Future<dynamic> getProductImageAsByteArray(String productImage) async {
+  Future<dynamic> getProductImageAsByteArray(String foodItemImage) async {
     try {
       final response = await dio.get(
-        "/images/$productImage",
+        "/images/$foodItemImage",
         options: Options(responseType: ResponseType.bytes),
       );
 
@@ -450,10 +450,10 @@ mixin ProductRepository {
     }
   }
 
-  Future<dynamic> getSelectedCategories(int productId) async {
+  Future<dynamic> getSelectedCategories(int foodItemId) async {
     try {
       final response =
-          await dio.get("${Constants.getSelectedCategories}/$productId");
+          await dio.get("${Constants.getSelectedCategories}/$foodItemId");
 
       if (response.statusCode == 200) {
         final list = response.data as List<dynamic>;
@@ -495,9 +495,9 @@ mixin ProductRepository {
     }
   }
 
-  Future<dynamic> removeAProductPhoto(int productId) async{
+  Future<dynamic> removeAProductPhoto(int foodItemId) async{
     try{
-      final response = await dio.delete("${Constants.removeAProductPhoto}/$productId");
+      final response = await dio.delete("${Constants.removeAFoodItemPhoto}/$foodItemId");
 
       if(response.statusCode==200){
         return "Deleted";

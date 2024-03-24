@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pos_mini/main.dart';
-import 'package:pos_mini/models/product/product.dart';
+import 'package:pos_mini/models/food_item/food_item.dart';
 
 class MenuListCard extends StatelessWidget {
-  final Product product;
+  final FoodItem product;
   final Function productAddedEvent;
 
   const MenuListCard({
@@ -28,7 +28,7 @@ class MenuListCard extends StatelessWidget {
             children: [
               Expanded(
                 child: Image.network(
-                  "$baseUrl/images/${product.productImage}",
+                  "$baseUrl/images/${product.foodItemImage}",
                   errorBuilder: (context, exception, stackTrace) {
                     return const Center(child: Text('Error'));
                   },
@@ -40,7 +40,7 @@ class MenuListCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      product.productName,
+                      product.foodItemName,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 16,
@@ -51,7 +51,7 @@ class MenuListCard extends StatelessWidget {
                       height: 8,
                     ),
                     Text(
-                      product.productPrice.toString(),
+                      product.foodItemPrice.toString(),
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 18,

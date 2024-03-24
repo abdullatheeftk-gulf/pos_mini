@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/take_away/take_away_bloc.dart';
-import 'package:pos_mini/models/product/product.dart';
+import 'package:pos_mini/models/food_item/food_item.dart';
 import 'package:pos_mini/screens/main/widgets/take_away/widgets/menu_item_display_screen/widget/menu_display/widgets/add_a_product_dialog/add_a_product_dialog.dart';
 import 'package:pos_mini/screens/main/widgets/take_away/widgets/menu_item_display_screen/widget/menu_display/widgets/menu_grid_view_display/menu_grid_view_display.dart';
 import 'package:pos_mini/screens/main/widgets/take_away/widgets/menu_item_display_screen/widget/menu_display/widgets/menu_list_view_display/menu_list_view_display.dart';
@@ -16,7 +16,7 @@ class MenuDisplayWidget extends StatefulWidget {
 }
 
 class _MenuDisplayWidgetState extends State<MenuDisplayWidget> {
-  List<Product> products = [];
+  List<FoodItem> products = [];
 
   // Menu Display mode select
   ProductView productView = ProductView.list;
@@ -25,7 +25,7 @@ class _MenuDisplayWidgetState extends State<MenuDisplayWidget> {
 
   bool _showEmptyListWidget = false;
 
-  void _showProductAddDialog(Product product) {
+  void _showProductAddDialog(FoodItem product) {
     showDialog(
       context: context,
       builder: (_) => AddAProductDialog(product: product),
@@ -55,7 +55,7 @@ class _MenuDisplayWidgetState extends State<MenuDisplayWidget> {
           final apiErrorData = apiError.errorData;
           errorMessage = "$apiErrorMessage, $apiErrorData";
 
-          // if product fetching failed product list is empty
+          // if food_item fetching failed food_item list is empty
           products = [];
           _showEmptyListWidget = false;
         }

@@ -16,8 +16,9 @@ class _SetBaseUrlScreenState extends State<SetBaseUrlScreen> {
 
   final _formKey = GlobalKey<FormState>();
 
-  bool showProgressBar = false;
-  String errorMessage = "";
+  bool _showProgressBar = false;
+
+  String _errorMessage = "";
 
   @override
   void dispose() {
@@ -55,15 +56,15 @@ class _SetBaseUrlScreenState extends State<SetBaseUrlScreen> {
       },
       builder: (context, state) {
         if (state is SetBaseUrlApiFetchingStartedState) {
-          showProgressBar = true;
+          _showProgressBar = true;
         }
         if (state is SetBaseUrlSuccessState) {
-          showProgressBar = false;
+          _showProgressBar = false;
         }
         if (state is SetBaseUrlFailedState) {
           final apiError = state.apiError;
-          errorMessage = apiError.errorMessage;
-          showProgressBar = false;
+          _errorMessage = apiError.errorMessage;
+          _showProgressBar = false;
         }
         return LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
@@ -82,7 +83,7 @@ class _SetBaseUrlScreenState extends State<SetBaseUrlScreen> {
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.centerFloat,
               floatingActionButton:
-                  showProgressBar ? const CircularProgressIndicator() : null,
+                  _showProgressBar ? const CircularProgressIndicator() : null,
               body: Center(
                 child: Container(
                   alignment: Alignment.center,
@@ -131,7 +132,7 @@ class _SetBaseUrlScreenState extends State<SetBaseUrlScreen> {
                                 height: 16,
                               ),
                               ElevatedButton(
-                                onPressed: showProgressBar
+                                onPressed: _showProgressBar
                                     ? null
                                     : () {
                                         hideKeyboard(context);

@@ -61,7 +61,7 @@ class CartListDisplayWidget extends StatelessWidget {
           );
         }
         final productPrice =
-            cartProductItems[index].product?.productPrice ?? 0.0;
+            cartProductItems[index].product?.foodItemPrice ?? 0.0;
         final qty = cartProductItems[index].qty;
         final amount = productPrice * qty;
         return Row(
@@ -145,7 +145,7 @@ class CartListDisplayWidget extends StatelessWidget {
                     BoxDecoration(border: Border.all(color: Colors.black12)),
                 child: Center(
                   child:
-                      Text('${cartProductItems[index].product?.productPrice}'),
+                      Text('${cartProductItems[index].product?.foodItemPrice}'),
                 ),
               ),
             ),

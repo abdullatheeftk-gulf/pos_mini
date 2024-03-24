@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/take_away/take_away_bloc.dart';
 import 'package:pos_mini/main.dart';
-import 'package:pos_mini/models/product/product.dart';
+import 'package:pos_mini/models/food_item/food_item.dart';
 
 class AddAProductDialog extends StatefulWidget {
-  final Product product;
+  final FoodItem product;
 
   const AddAProductDialog({super.key, required this.product});
 
@@ -28,7 +28,7 @@ class _AddAProductDialogState extends State<AddAProductDialog> {
     final baseUrl = dio.options.baseUrl;
     return AlertDialog(
       title: Text(
-        widget.product.productName,
+        widget.product.foodItemName,
         textAlign: TextAlign.center,
         style: const TextStyle(
           decoration: TextDecoration.underline,
@@ -41,7 +41,7 @@ class _AddAProductDialogState extends State<AddAProductDialog> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.network(
-              '$baseUrl/downloadAnImage/${widget.product.productImage}',
+              '$baseUrl/downloadAnImage/${widget.product.foodItemImage}',
               width: 150,
               height: 150,
               errorBuilder: (context, object, stackTrace) {
@@ -119,7 +119,7 @@ class _AddAProductDialogState extends State<AddAProductDialog> {
               controller: _noteController,
               decoration: InputDecoration(
                   label: const Text('Note'),
-                  hintText: 'Enter Notes about product',
+                  hintText: 'Enter Notes about food_item',
                   hintStyle: TextStyle(
                     color: Colors.black26.withOpacity(0.3),
                   ),

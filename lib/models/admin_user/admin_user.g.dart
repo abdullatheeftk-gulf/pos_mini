@@ -8,7 +8,7 @@ part of 'admin_user.dart';
 
 _$AdminUserImpl _$$AdminUserImplFromJson(Map<String, dynamic> json) =>
     _$AdminUserImpl(
-      adminId: json['adminId'] as int? ?? 0,
+      adminId: json['adminId'] as int? ?? 1,
       adminName: json['adminName'] as String,
       adminPassword: json['adminPassword'] as String,
       licenseKey: json['licenseKey'] as String,
