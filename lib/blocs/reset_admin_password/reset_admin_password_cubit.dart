@@ -41,12 +41,11 @@ class ResetAdminPasswordCubit extends Cubit<ResetAdminPasswordState> {
 
 
   void navigateBack() {
-    emit(const ResetAdminPasswordState.buildState(navigate: "Pop uup"));
+    emit(const ResetAdminPasswordState.buildState(navigate: "Pop up"));
   }
 
   bool checkOldPasswordEnteredIsCorrect(String newPassword){
     final adminPasswordFromData = sharedDataRepository.getAdminPassword();
-
     return adminPasswordFromData==newPassword;
   }
 

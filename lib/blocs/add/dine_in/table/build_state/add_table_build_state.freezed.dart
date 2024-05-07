@@ -19,6 +19,7 @@ mixin _$AddTableBuildState<T> {
   bool get showProgressBar => throw _privateConstructorUsedError;
   T? get result => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
+  String? get barcodeErrorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddTableBuildStateCopyWith<T, AddTableBuildState<T>> get copyWith =>
@@ -31,7 +32,11 @@ abstract class $AddTableBuildStateCopyWith<T, $Res> {
           $Res Function(AddTableBuildState<T>) then) =
       _$AddTableBuildStateCopyWithImpl<T, $Res, AddTableBuildState<T>>;
   @useResult
-  $Res call({bool showProgressBar, T? result, String? errorMessage});
+  $Res call(
+      {bool showProgressBar,
+      T? result,
+      String? errorMessage,
+      String? barcodeErrorMessage});
 }
 
 /// @nodoc
@@ -51,6 +56,7 @@ class _$AddTableBuildStateCopyWithImpl<T, $Res,
     Object? showProgressBar = null,
     Object? result = freezed,
     Object? errorMessage = freezed,
+    Object? barcodeErrorMessage = freezed,
   }) {
     return _then(_value.copyWith(
       showProgressBar: null == showProgressBar
@@ -65,6 +71,10 @@ class _$AddTableBuildStateCopyWithImpl<T, $Res,
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      barcodeErrorMessage: freezed == barcodeErrorMessage
+          ? _value.barcodeErrorMessage
+          : barcodeErrorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -77,7 +87,11 @@ abstract class _$$AddTableBuildStateImplCopyWith<T, $Res>
       __$$AddTableBuildStateImplCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({bool showProgressBar, T? result, String? errorMessage});
+  $Res call(
+      {bool showProgressBar,
+      T? result,
+      String? errorMessage,
+      String? barcodeErrorMessage});
 }
 
 /// @nodoc
@@ -95,6 +109,7 @@ class __$$AddTableBuildStateImplCopyWithImpl<T, $Res>
     Object? showProgressBar = null,
     Object? result = freezed,
     Object? errorMessage = freezed,
+    Object? barcodeErrorMessage = freezed,
   }) {
     return _then(_$AddTableBuildStateImpl<T>(
       showProgressBar: null == showProgressBar
@@ -109,6 +124,10 @@ class __$$AddTableBuildStateImplCopyWithImpl<T, $Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      barcodeErrorMessage: freezed == barcodeErrorMessage
+          ? _value.barcodeErrorMessage
+          : barcodeErrorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -119,7 +138,8 @@ class _$AddTableBuildStateImpl<T> implements _AddTableBuildState<T> {
   const _$AddTableBuildStateImpl(
       {this.showProgressBar = false,
       this.result = null,
-      this.errorMessage = null});
+      this.errorMessage = null,
+      this.barcodeErrorMessage = null});
 
   @override
   @JsonKey()
@@ -130,10 +150,13 @@ class _$AddTableBuildStateImpl<T> implements _AddTableBuildState<T> {
   @override
   @JsonKey()
   final String? errorMessage;
+  @override
+  @JsonKey()
+  final String? barcodeErrorMessage;
 
   @override
   String toString() {
-    return 'AddTableBuildState<$T>(showProgressBar: $showProgressBar, result: $result, errorMessage: $errorMessage)';
+    return 'AddTableBuildState<$T>(showProgressBar: $showProgressBar, result: $result, errorMessage: $errorMessage, barcodeErrorMessage: $barcodeErrorMessage)';
   }
 
   @override
@@ -145,12 +168,18 @@ class _$AddTableBuildStateImpl<T> implements _AddTableBuildState<T> {
                 other.showProgressBar == showProgressBar) &&
             const DeepCollectionEquality().equals(other.result, result) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.barcodeErrorMessage, barcodeErrorMessage) ||
+                other.barcodeErrorMessage == barcodeErrorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, showProgressBar,
-      const DeepCollectionEquality().hash(result), errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      showProgressBar,
+      const DeepCollectionEquality().hash(result),
+      errorMessage,
+      barcodeErrorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -164,7 +193,8 @@ abstract class _AddTableBuildState<T> implements AddTableBuildState<T> {
   const factory _AddTableBuildState(
       {final bool showProgressBar,
       final T? result,
-      final String? errorMessage}) = _$AddTableBuildStateImpl<T>;
+      final String? errorMessage,
+      final String? barcodeErrorMessage}) = _$AddTableBuildStateImpl<T>;
 
   @override
   bool get showProgressBar;
@@ -172,6 +202,8 @@ abstract class _AddTableBuildState<T> implements AddTableBuildState<T> {
   T? get result;
   @override
   String? get errorMessage;
+  @override
+  String? get barcodeErrorMessage;
   @override
   @JsonKey(ignore: true)
   _$$AddTableBuildStateImplCopyWith<T, _$AddTableBuildStateImpl<T>>

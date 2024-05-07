@@ -6,20 +6,21 @@ import 'package:pos_mini/blocs/add/dine_in/table/consumer_state/add_table_consum
 import 'package:pos_mini/models/barcode/barcode.dart';
 import 'package:pos_mini/models/dine_in/area/dine_in_area.dart';
 import 'package:pos_mini/models/dine_in/table/dine_in_table.dart';
+import 'package:pos_mini/screens/main/widgets/add/widgets/dine_in/screen/add_table/widget/area_select_drop_down_menu.dart';
+import 'package:pos_mini/screens/main/widgets/add/widgets/dine_in/screen/add_table/widget/drop_down_for_no_of_seats.dart';
 
-import 'area_select_drop_down_menu.dart';
-import 'drop_down_for_no_of_seats.dart';
 
-class BigAddTableScreen extends StatefulWidget {
+
+class BigEditTableScreen extends StatefulWidget {
   final DineInArea? dineInArea;
 
-  const BigAddTableScreen({super.key, this.dineInArea});
+  const BigEditTableScreen({super.key, this.dineInArea});
 
   @override
-  State<BigAddTableScreen> createState() => _BigAddTableScreenState();
+  State<BigEditTableScreen> createState() => _BigEditTableScreenState();
 }
 
-class _BigAddTableScreenState extends State<BigAddTableScreen> {
+class _BigEditTableScreenState extends State<BigEditTableScreen> {
   bool _showProgressBar = false;
   String? _errorMessage;
 
@@ -199,7 +200,7 @@ class _BigAddTableScreenState extends State<BigAddTableScreen> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               const Expanded(
-                                child: DropDownForNoOfSeats(),
+                                child: DropDownForNoOfSeats(dineInTable: null),
                               ),
                               const SizedBox(width: 8,),
                               Expanded(

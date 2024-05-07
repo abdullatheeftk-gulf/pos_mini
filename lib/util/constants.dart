@@ -32,13 +32,18 @@ class Constants{
   static const String addArea = '/area/add';
   static const String updateArea = '/area/updateAnArea';
   static const String deleteAnAreaById = '/area/deleteAnAreaById/';
+  static const String addTable = '/table/add';
+  static const String getAllTableUnderAnArea = "/table/getTablesByAreaId/";
+  static const String updateATable = "/table/updateATable";
+  static const String deleteATable = "/table/deleteATableById/";
 
   // Barcode
-  static const String addBarcode = 'barcode/addBarcode';
-  static const String addBarcodeOtherId = 'barcode/addOtherId';
-  static const String updateBarcodeByFoodItemId = 'barcode/updateBarcodeByFoodItemId';
-  static const String updateBarcodeByMultiFoodItemId = 'barcode/updateBarcodeByMultiFoodItemId';
-  static const String updateBarcodeByTableId = 'barcode/updateBarcodeByTableId';
+  static const String addBarcode = '/barcode/addBarcode';
+  static const String addBarcodeOtherId = '/barcode/addOtherId';
+  static const String updateBarcodeByFoodItemId = '/barcode/updateBarcodeByFoodItemId';
+  static const String updateBarcodeByMultiFoodItemId = '/barcode/updateBarcodeByMultiFoodItemId';
+  static const String updateBarcodeByTableId = '/barcode/updateBarcodeByTableId';
+  static const String getBarcodeByDineInTableId = "/barcode/getBarcodeByDineInTableId/";
 
 
 

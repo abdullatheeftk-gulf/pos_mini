@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/add/dine_in/area/area_cubit.dart';
 import 'package:pos_mini/models/dine_in/area/dine_in_area.dart';
-import 'package:pos_mini/util/log_functions/log_functions.dart';
+
 
 class EditAreaDialog extends StatefulWidget {
   final DineInArea dineInArea;

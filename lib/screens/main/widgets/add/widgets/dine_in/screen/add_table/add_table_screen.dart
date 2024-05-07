@@ -5,23 +5,24 @@ import 'package:pos_mini/screens/main/widgets/add/widgets/dine_in/screen/add_tab
 
 class AddTableScreen extends StatelessWidget {
   final DineInArea? dineInArea;
+
   const AddTableScreen({super.key, required this.dineInArea});
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context,constraints){
-      final screenWidth = constraints.maxWidth;
 
-      return   Scaffold(
-        appBar: AppBar(
-          title: const Text("Add Table"),
-        ),
-        body: Padding(
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final screenWidth = constraints.maxWidth;
+
+
+        return Padding(
           padding: const EdgeInsets.all(8),
-          child: screenWidth<=500 ? SmallAddTableScreen() :BigAddTableScreen()
-        ),
-      );
-    }
+          child: screenWidth <= 600
+              ?  SmallAddTableScreen(dineInArea: dineInArea,)
+              :  BigAddTableScreen(dineInArea: dineInArea,),
+        );
+      },
     );
   }
 }

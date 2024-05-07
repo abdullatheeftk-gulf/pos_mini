@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/add/dine_in/table/add_table_cubit.dart';
+import 'package:pos_mini/models/dine_in/table/dine_in_table.dart';
 import 'package:pos_mini/util/new_pair/new_pair.dart';
 import 'package:pos_mini/util/pair.dart';
 
 class DropDownForNoOfSeats extends StatefulWidget {
-  const DropDownForNoOfSeats({super.key});
+  final DineInTable? dineInTable;
+  const DropDownForNoOfSeats({super.key, required this.dineInTable});
 
   @override
   State<DropDownForNoOfSeats> createState() => _DropDownForNoOfSeatsState();
@@ -35,6 +37,13 @@ class _DropDownForNoOfSeatsState extends State<DropDownForNoOfSeats> {
   void initState() {
     _addTableCubit = context.read<AddTableCubit>();
 
+    if(widget.dineInTable!=null){
+      final dT = widget.dineInTable!;
+      final pair = NewPair(first: dT.image, second: dT.noOfSeats);
+      _dropDownValue = pair;
+    }
+    
+
     super.initState();
   }
 
@@ -45,7 +54,9 @@ class _DropDownForNoOfSeatsState extends State<DropDownForNoOfSeats> {
         width: double.maxFinite,
         child: DropdownButtonFormField<NewPair<String, int>>(
           decoration: const InputDecoration(
-              label: Text("No Of seats"), border: OutlineInputBorder()),
+            label: Text("No Of seats"),
+            border: OutlineInputBorder(),
+          ),
           value: _dropDownValue,
           icon: const Icon(Icons.arrow_downward),
           iconSize: 16,
@@ -63,7 +74,11 @@ class _DropDownForNoOfSeatsState extends State<DropDownForNoOfSeats> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(16.0),
-                        child: Image.asset(e.first,width: 100,height: 100,),
+                        child: Image.asset(
+                          e.first,
+                          width: 100,
+                          height: 100,
+                        ),
                       )
                     ],
                   ),
@@ -73,6 +88,7 @@ class _DropDownForNoOfSeatsState extends State<DropDownForNoOfSeats> {
           onChanged: (value) {
             setState(() {
               _dropDownValue = value!;
+              _addTableCubit.setNoOfSeatsSelected(value);
             });
             /*setState(() {
               _dropDownValue = value!;

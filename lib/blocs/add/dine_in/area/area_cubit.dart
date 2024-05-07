@@ -118,4 +118,6 @@ class AreaCubit extends Cubit<AreaState> {
     emit(const AreaConsumerState(deleteDialog: ShowDialog(message: "show")));
     emit(const AreaBuildState(showProgressBar: false));
   }
+
+
 }
