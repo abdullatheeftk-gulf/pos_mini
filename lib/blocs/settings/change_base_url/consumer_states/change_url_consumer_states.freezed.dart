@@ -12,13 +12,13 @@ part of 'change_url_consumer_states.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ChangeUrlConsumerStates {
   String? get navigate => throw _privateConstructorUsedError;
   ApiError? get apiError => throw _privateConstructorUsedError;
-  ShowDialog? get showDialog => throw _privateConstructorUsedError;
+  ShowDialog<dynamic>? get showDialog => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ChangeUrlConsumerStatesCopyWith<ChangeUrlConsumerStates> get copyWith =>
@@ -31,10 +31,11 @@ abstract class $ChangeUrlConsumerStatesCopyWith<$Res> {
           $Res Function(ChangeUrlConsumerStates) then) =
       _$ChangeUrlConsumerStatesCopyWithImpl<$Res, ChangeUrlConsumerStates>;
   @useResult
-  $Res call({String? navigate, ApiError? apiError, ShowDialog? showDialog});
+  $Res call(
+      {String? navigate, ApiError? apiError, ShowDialog<dynamic>? showDialog});
 
   $ApiErrorCopyWith<$Res>? get apiError;
-  $ShowDialogCopyWith<$Res>? get showDialog;
+  $ShowDialogCopyWith<dynamic, $Res>? get showDialog;
 }
 
 /// @nodoc
@@ -67,7 +68,7 @@ class _$ChangeUrlConsumerStatesCopyWithImpl<$Res,
       showDialog: freezed == showDialog
           ? _value.showDialog
           : showDialog // ignore: cast_nullable_to_non_nullable
-              as ShowDialog?,
+              as ShowDialog<dynamic>?,
     ) as $Val);
   }
 
@@ -85,12 +86,12 @@ class _$ChangeUrlConsumerStatesCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $ShowDialogCopyWith<$Res>? get showDialog {
+  $ShowDialogCopyWith<dynamic, $Res>? get showDialog {
     if (_value.showDialog == null) {
       return null;
     }
 
-    return $ShowDialogCopyWith<$Res>(_value.showDialog!, (value) {
+    return $ShowDialogCopyWith<dynamic, $Res>(_value.showDialog!, (value) {
       return _then(_value.copyWith(showDialog: value) as $Val);
     });
   }
@@ -105,12 +106,13 @@ abstract class _$$ChangeUrlConsumerStatesImplCopyWith<$Res>
       __$$ChangeUrlConsumerStatesImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? navigate, ApiError? apiError, ShowDialog? showDialog});
+  $Res call(
+      {String? navigate, ApiError? apiError, ShowDialog<dynamic>? showDialog});
 
   @override
   $ApiErrorCopyWith<$Res>? get apiError;
   @override
-  $ShowDialogCopyWith<$Res>? get showDialog;
+  $ShowDialogCopyWith<dynamic, $Res>? get showDialog;
 }
 
 /// @nodoc
@@ -142,7 +144,7 @@ class __$$ChangeUrlConsumerStatesImplCopyWithImpl<$Res>
       showDialog: freezed == showDialog
           ? _value.showDialog
           : showDialog // ignore: cast_nullable_to_non_nullable
-              as ShowDialog?,
+              as ShowDialog<dynamic>?,
     ));
   }
 }
@@ -161,7 +163,7 @@ class _$ChangeUrlConsumerStatesImpl implements _ChangeUrlConsumerStates {
   final ApiError? apiError;
   @override
   @JsonKey()
-  final ShowDialog? showDialog;
+  final ShowDialog<dynamic>? showDialog;
 
   @override
   String toString() {
@@ -196,14 +198,14 @@ abstract class _ChangeUrlConsumerStates implements ChangeUrlConsumerStates {
   const factory _ChangeUrlConsumerStates(
       {final String? navigate,
       final ApiError? apiError,
-      final ShowDialog? showDialog}) = _$ChangeUrlConsumerStatesImpl;
+      final ShowDialog<dynamic>? showDialog}) = _$ChangeUrlConsumerStatesImpl;
 
   @override
   String? get navigate;
   @override
   ApiError? get apiError;
   @override
-  ShowDialog? get showDialog;
+  ShowDialog<dynamic>? get showDialog;
   @override
   @JsonKey(ignore: true)
   _$$ChangeUrlConsumerStatesImplCopyWith<_$ChangeUrlConsumerStatesImpl>

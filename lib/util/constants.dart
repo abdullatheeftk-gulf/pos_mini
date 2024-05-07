@@ -30,7 +30,15 @@ class Constants{
   // Dine in section
   static const String getAllAreas = '/area/getAllAreas';
   static const String addArea = '/area/add';
+  static const String updateArea = '/area/updateAnArea';
+  static const String deleteAnAreaById = '/area/deleteAnAreaById/';
 
+  // Barcode
+  static const String addBarcode = 'barcode/addBarcode';
+  static const String addBarcodeOtherId = 'barcode/addOtherId';
+  static const String updateBarcodeByFoodItemId = 'barcode/updateBarcodeByFoodItemId';
+  static const String updateBarcodeByMultiFoodItemId = 'barcode/updateBarcodeByMultiFoodItemId';
+  static const String updateBarcodeByTableId = 'barcode/updateBarcodeByTableId';
 
 
 

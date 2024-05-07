@@ -12,9 +12,5 @@ class ResetAdminPasswordState<T> with _$ResetAdminPasswordState {
     @Default(null) ShowDialog? showDialog,
   }) = _buildState;
 
-  /*const factory ResetAdminPasswordState.consumerState({
-    @Default(null) ApiError? apiError,
-    @Default(null) String? navigate,
-    @Default(null) ShowDialog? showDialog
-  }) = _consumerState;*/
+
 }

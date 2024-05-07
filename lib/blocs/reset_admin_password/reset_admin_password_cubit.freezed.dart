@@ -12,15 +12,19 @@ part of 'reset_admin_password_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ResetAdminPasswordState<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
-    required TResult Function(bool showProgressBar, T? result,
-            ApiError? apiError, String? navigate, ShowDialog? showDialog)
+    required TResult Function(
+            bool showProgressBar,
+            T? result,
+            ApiError? apiError,
+            String? navigate,
+            ShowDialog<dynamic>? showDialog)
         buildState,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +32,7 @@ mixin _$ResetAdminPasswordState<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
     TResult? Function(bool showProgressBar, T? result, ApiError? apiError,
-            String? navigate, ShowDialog? showDialog)?
+            String? navigate, ShowDialog<dynamic>? showDialog)?
         buildState,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +40,7 @@ mixin _$ResetAdminPasswordState<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool showProgressBar, T? result, ApiError? apiError,
-            String? navigate, ShowDialog? showDialog)?
+            String? navigate, ShowDialog<dynamic>? showDialog)?
         buildState,
     required TResult orElse(),
   }) =>
@@ -121,8 +125,12 @@ class _$InitialStateImpl<T> implements _InitialState<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
-    required TResult Function(bool showProgressBar, T? result,
-            ApiError? apiError, String? navigate, ShowDialog? showDialog)
+    required TResult Function(
+            bool showProgressBar,
+            T? result,
+            ApiError? apiError,
+            String? navigate,
+            ShowDialog<dynamic>? showDialog)
         buildState,
   }) {
     return initialState();
@@ -133,7 +141,7 @@ class _$InitialStateImpl<T> implements _InitialState<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
     TResult? Function(bool showProgressBar, T? result, ApiError? apiError,
-            String? navigate, ShowDialog? showDialog)?
+            String? navigate, ShowDialog<dynamic>? showDialog)?
         buildState,
   }) {
     return initialState?.call();
@@ -144,7 +152,7 @@ class _$InitialStateImpl<T> implements _InitialState<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool showProgressBar, T? result, ApiError? apiError,
-            String? navigate, ShowDialog? showDialog)?
+            String? navigate, ShowDialog<dynamic>? showDialog)?
         buildState,
     required TResult orElse(),
   }) {
@@ -201,10 +209,10 @@ abstract class _$$buildStateImplCopyWith<T, $Res> {
       T? result,
       ApiError? apiError,
       String? navigate,
-      ShowDialog? showDialog});
+      ShowDialog<dynamic>? showDialog});
 
   $ApiErrorCopyWith<$Res>? get apiError;
-  $ShowDialogCopyWith<$Res>? get showDialog;
+  $ShowDialogCopyWith<dynamic, $Res>? get showDialog;
 }
 
 /// @nodoc
@@ -244,7 +252,7 @@ class __$$buildStateImplCopyWithImpl<T, $Res>
       showDialog: freezed == showDialog
           ? _value.showDialog
           : showDialog // ignore: cast_nullable_to_non_nullable
-              as ShowDialog?,
+              as ShowDialog<dynamic>?,
     ));
   }
 
@@ -262,12 +270,12 @@ class __$$buildStateImplCopyWithImpl<T, $Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $ShowDialogCopyWith<$Res>? get showDialog {
+  $ShowDialogCopyWith<dynamic, $Res>? get showDialog {
     if (_value.showDialog == null) {
       return null;
     }
 
-    return $ShowDialogCopyWith<$Res>(_value.showDialog!, (value) {
+    return $ShowDialogCopyWith<dynamic, $Res>(_value.showDialog!, (value) {
       return _then(_value.copyWith(showDialog: value));
     });
   }
@@ -297,7 +305,7 @@ class _$buildStateImpl<T> implements _buildState<T> {
   final String? navigate;
   @override
   @JsonKey()
-  final ShowDialog? showDialog;
+  final ShowDialog<dynamic>? showDialog;
 
   @override
   String toString() {
@@ -339,8 +347,12 @@ class _$buildStateImpl<T> implements _buildState<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
-    required TResult Function(bool showProgressBar, T? result,
-            ApiError? apiError, String? navigate, ShowDialog? showDialog)
+    required TResult Function(
+            bool showProgressBar,
+            T? result,
+            ApiError? apiError,
+            String? navigate,
+            ShowDialog<dynamic>? showDialog)
         buildState,
   }) {
     return buildState(showProgressBar, result, apiError, navigate, showDialog);
@@ -351,7 +363,7 @@ class _$buildStateImpl<T> implements _buildState<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
     TResult? Function(bool showProgressBar, T? result, ApiError? apiError,
-            String? navigate, ShowDialog? showDialog)?
+            String? navigate, ShowDialog<dynamic>? showDialog)?
         buildState,
   }) {
     return buildState?.call(
@@ -363,7 +375,7 @@ class _$buildStateImpl<T> implements _buildState<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool showProgressBar, T? result, ApiError? apiError,
-            String? navigate, ShowDialog? showDialog)?
+            String? navigate, ShowDialog<dynamic>? showDialog)?
         buildState,
     required TResult orElse(),
   }) {
@@ -412,13 +424,13 @@ abstract class _buildState<T> implements ResetAdminPasswordState<T> {
       final T? result,
       final ApiError? apiError,
       final String? navigate,
-      final ShowDialog? showDialog}) = _$buildStateImpl<T>;
+      final ShowDialog<dynamic>? showDialog}) = _$buildStateImpl<T>;
 
   bool get showProgressBar;
   T? get result;
   ApiError? get apiError;
   String? get navigate;
-  ShowDialog? get showDialog;
+  ShowDialog<dynamic>? get showDialog;
   @JsonKey(ignore: true)
   _$$buildStateImplCopyWith<T, _$buildStateImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;

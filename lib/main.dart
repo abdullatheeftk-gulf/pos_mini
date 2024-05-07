@@ -2,8 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/add/add_bloc.dart';
+import 'package:pos_mini/blocs/add/dine_in/table/add_table_cubit.dart';
 import 'package:pos_mini/blocs/add/edit_product/edit_product_cubit.dart';
 import 'package:pos_mini/blocs/admin_login/admin_login_bloc.dart';
+import 'package:pos_mini/blocs/add/dine_in/area/area_cubit.dart';
 import 'package:pos_mini/blocs/main/main_bloc.dart';
 import 'package:pos_mini/blocs/reset_admin_password/reset_admin_password_cubit.dart';
 import 'package:pos_mini/blocs/settings/add_user/add_user_cubit.dart';
@@ -116,6 +118,16 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (_) => LogoutCubit(),
+          ),
+          BlocProvider(
+            create: (context) => AreaCubit(
+              apiRepository: context.read<ApiRepository>(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => AddTableCubit(
+              apiRepository: context.read<ApiRepository>(),
+            ),
           ),
         ],
         child: MaterialApp(

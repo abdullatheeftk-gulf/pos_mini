@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/settings/logout_bloc/logout_consumer_state/logout_consumer_state.dart';
 import 'package:pos_mini/blocs/settings/logout_bloc/logout_cubit.dart';
 import 'package:pos_mini/screens/login/user/user_login_screen.dart';
-import 'package:pos_mini/screens/main/widgets/settings/child/admin_Text_buttons.dart';
-import 'package:pos_mini/screens/main/widgets/settings/child/screens/cjange_base_url/change_base_url_screen.dart';
+import 'package:pos_mini/screens/main/widgets/settings/child/admin_text_buttons.dart';
+import 'package:pos_mini/screens/main/widgets/settings/child/screens/change_base_url/change_base_url_screen.dart';
 
 class SettingsMainScreen extends StatefulWidget {
   final bool isAdminLogin;

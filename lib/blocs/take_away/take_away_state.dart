@@ -30,7 +30,7 @@ final class TakeAwayGetAllCategoriesSuccessState extends TakeAwayCategoryUiState
   TakeAwayGetAllCategoriesSuccessState({required this.categories});
 }
 
-// menu display widget for error message
+// menu display child for error message
 final class TakeAwayGetAllCategoriesFailedState extends TakeAwayMenuDisplayWidgetUiBuildState{
   final ApiError apiError;
 
@@ -44,31 +44,31 @@ final class TakeAwayOnCategoryClickedState extends TakeAwayCategoryUiState{
   TakeAwayOnCategoryClickedState({required this.categoryId});
 }
 
-// menu display widget
+// menu display child
 final class TakeAwayGetProductByCategorySuccessState extends TakeAwayMenuDisplayWidgetUiBuildState{
   final List<FoodItem> products;
 
   TakeAwayGetProductByCategorySuccessState({required this.products});
 }
 
-// menu display widget  for error message
+// menu display child  for error message
 final class TakeAwayGetProductByCategoryFailedState extends TakeAwayMenuDisplayWidgetUiBuildState{
   final ApiError apiError;
 
   TakeAwayGetProductByCategoryFailedState({required this.apiError});
 }
 
-// menu display widget Circular progress indicator
+// menu display child Circular progress indicator
 
 final class TakeAwayScreenShowCircularProgressIndicatorState extends TakeAwayState{}
 
-// menu display widget menu mode selected
+// menu display child menu mode selected
 final class TakeAwayOnMenuModeSelectedState extends TakeAwayMenuDisplayWidgetUiBuildState{
   final ProductView productView;
 
   TakeAwayOnMenuModeSelectedState({required this.productView});
 }
-// menu display widget empty food_item list
+// menu display child empty food_item list
 final class TakeAwayEmptyProductListState extends TakeAwayMenuDisplayWidgetUiBuildState{}
 
 

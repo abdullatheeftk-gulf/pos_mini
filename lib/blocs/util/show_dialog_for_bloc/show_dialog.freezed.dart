@@ -12,29 +12,30 @@ part of 'show_dialog.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ShowDialog {
+mixin _$ShowDialog<T> {
+  T? get data => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ShowDialogCopyWith<ShowDialog> get copyWith =>
+  $ShowDialogCopyWith<T, ShowDialog<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ShowDialogCopyWith<$Res> {
+abstract class $ShowDialogCopyWith<T, $Res> {
   factory $ShowDialogCopyWith(
-          ShowDialog value, $Res Function(ShowDialog) then) =
-      _$ShowDialogCopyWithImpl<$Res, ShowDialog>;
+          ShowDialog<T> value, $Res Function(ShowDialog<T>) then) =
+      _$ShowDialogCopyWithImpl<T, $Res, ShowDialog<T>>;
   @useResult
-  $Res call({String message});
+  $Res call({T? data, String message});
 }
 
 /// @nodoc
-class _$ShowDialogCopyWithImpl<$Res, $Val extends ShowDialog>
-    implements $ShowDialogCopyWith<$Res> {
+class _$ShowDialogCopyWithImpl<T, $Res, $Val extends ShowDialog<T>>
+    implements $ShowDialogCopyWith<T, $Res> {
   _$ShowDialogCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -45,9 +46,14 @@ class _$ShowDialogCopyWithImpl<$Res, $Val extends ShowDialog>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? data = freezed,
     Object? message = null,
   }) {
     return _then(_value.copyWith(
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as T?,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -57,30 +63,35 @@ class _$ShowDialogCopyWithImpl<$Res, $Val extends ShowDialog>
 }
 
 /// @nodoc
-abstract class _$$ShowDialogImplCopyWith<$Res>
-    implements $ShowDialogCopyWith<$Res> {
+abstract class _$$ShowDialogImplCopyWith<T, $Res>
+    implements $ShowDialogCopyWith<T, $Res> {
   factory _$$ShowDialogImplCopyWith(
-          _$ShowDialogImpl value, $Res Function(_$ShowDialogImpl) then) =
-      __$$ShowDialogImplCopyWithImpl<$Res>;
+          _$ShowDialogImpl<T> value, $Res Function(_$ShowDialogImpl<T>) then) =
+      __$$ShowDialogImplCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({String message});
+  $Res call({T? data, String message});
 }
 
 /// @nodoc
-class __$$ShowDialogImplCopyWithImpl<$Res>
-    extends _$ShowDialogCopyWithImpl<$Res, _$ShowDialogImpl>
-    implements _$$ShowDialogImplCopyWith<$Res> {
+class __$$ShowDialogImplCopyWithImpl<T, $Res>
+    extends _$ShowDialogCopyWithImpl<T, $Res, _$ShowDialogImpl<T>>
+    implements _$$ShowDialogImplCopyWith<T, $Res> {
   __$$ShowDialogImplCopyWithImpl(
-      _$ShowDialogImpl _value, $Res Function(_$ShowDialogImpl) _then)
+      _$ShowDialogImpl<T> _value, $Res Function(_$ShowDialogImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? data = freezed,
     Object? message = null,
   }) {
-    return _then(_$ShowDialogImpl(
+    return _then(_$ShowDialogImpl<T>(
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as T?,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -91,42 +102,50 @@ class __$$ShowDialogImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ShowDialogImpl implements _ShowDialog {
-  const _$ShowDialogImpl({required this.message});
+class _$ShowDialogImpl<T> implements _ShowDialog<T> {
+  const _$ShowDialogImpl({this.data = null, required this.message});
 
+  @override
+  @JsonKey()
+  final T? data;
   @override
   final String message;
 
   @override
   String toString() {
-    return 'ShowDialog(message: $message)';
+    return 'ShowDialog<$T>(data: $data, message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ShowDialogImpl &&
+            other is _$ShowDialogImpl<T> &&
+            const DeepCollectionEquality().equals(other.data, data) &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(data), message);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ShowDialogImplCopyWith<_$ShowDialogImpl> get copyWith =>
-      __$$ShowDialogImplCopyWithImpl<_$ShowDialogImpl>(this, _$identity);
+  _$$ShowDialogImplCopyWith<T, _$ShowDialogImpl<T>> get copyWith =>
+      __$$ShowDialogImplCopyWithImpl<T, _$ShowDialogImpl<T>>(this, _$identity);
 }
 
-abstract class _ShowDialog implements ShowDialog {
-  const factory _ShowDialog({required final String message}) = _$ShowDialogImpl;
+abstract class _ShowDialog<T> implements ShowDialog<T> {
+  const factory _ShowDialog({final T? data, required final String message}) =
+      _$ShowDialogImpl<T>;
 
+  @override
+  T? get data;
   @override
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$ShowDialogImplCopyWith<_$ShowDialogImpl> get copyWith =>
+  _$$ShowDialogImplCopyWith<T, _$ShowDialogImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

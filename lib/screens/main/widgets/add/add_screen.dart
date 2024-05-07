@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/add/add_bloc.dart';
-import 'package:pos_mini/screens/main/widgets/add/widgets/add_area/add_area_screen.dart';
 import 'package:pos_mini/screens/main/widgets/add/widgets/add_category_screen/add_category_screen.dart';
 import 'package:pos_mini/screens/main/widgets/add/widgets/add_product_screen/add_product_screen.dart';
-import 'package:pos_mini/screens/main/widgets/add/widgets/edit_or_delete_a_product/edit_or_delete_a_product.dart';
+import 'package:pos_mini/screens/main/widgets/add/widgets/dine_in/dine_in_add_screen.dart';
 import 'package:pos_mini/screens/main/widgets/add/widgets/edit_or_delete_a_product/edit_or_delete_main_screen.dart';
 
 class AddScreen extends StatefulWidget {
@@ -99,8 +98,9 @@ class _AddScreenState extends State<AddScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    const AddProductScreen(incomingCategory: null,)));
+                                builder: (context) => const AddProductScreen(
+                                      incomingCategory: null,
+                                    )));
                       },
                     ),
                     InkWell(
@@ -157,8 +157,7 @@ class _AddScreenState extends State<AddScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                            const AddAreaScreen(),
+                            builder: (context) => const DineInAddScreen(),
                           ),
                         );
                       },
