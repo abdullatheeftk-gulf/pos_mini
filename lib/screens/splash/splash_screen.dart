@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/splash/splash_bloc.dart';
 import 'package:pos_mini/screens/login/user/user_login_screen.dart';
 import 'package:pos_mini/screens/set_base_url/set_base_url_screen.dart';
+import 'package:pos_mini/util/color_constants.dart';
+import 'package:pos_mini/util/log_functions/log_functions.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,10 +18,23 @@ class _SplashScreenState extends State<SplashScreen> {
   String errorText = "";
   bool showSetBaseUrlButton = false;
 
+  late final SplashBloc _splashBloc;
+
   @override
   void initState() {
-    context.read<SplashBloc>().add(FetchWelcomeMessageEvent());
+
+    _splashBloc = context.read<SplashBloc>();
+    _splashBloc.add(FetchWelcomeMessageEvent());
     super.initState();
+  }
+
+
+  @override
+  void dispose() {
+   // printWarning("Disposed Splash screen");
+    _splashBloc.close();
+    super.dispose();
+
   }
 
   @override
@@ -33,7 +48,8 @@ class _SplashScreenState extends State<SplashScreen> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text("$errorCode,$errorMessage, $errorData"),
-              duration: const Duration(seconds: 2),
+              duration: const Duration(seconds: 3),
+              backgroundColor: Colors.red,
             ),
           );
         }
@@ -57,7 +73,8 @@ class _SplashScreenState extends State<SplashScreen> {
       },
       builder: (context, state) {
         if (state is SplashWelcomeMessageFetchFailedState) {
-          errorText = "${state.apiError.errorMessage}, ${state.apiError.errorData}";
+          errorText =
+              "${state.apiError.errorMessage}, ${state.apiError.errorData}";
           loadingWidget = false;
           showSetBaseUrlButton = true;
         }
@@ -78,9 +95,10 @@ class _SplashScreenState extends State<SplashScreen> {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      backgroundColor: const Color.fromARGB(255, 0, 26, 51),
-                      foregroundColor: Colors.white),
+                    elevation: 0,
+                    backgroundColor: deepBlueColour,
+                    foregroundColor: Colors.white,
+                  ),
                   child: const Text("Set Base Url"),
                 )
               : null,
@@ -94,7 +112,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image.asset("assets/images/back.png"),
-                 /* if (errorText.isEmpty)
+                  /* if (errorText.isEmpty)
                     RichText(
                       textAlign: TextAlign.center,
                       text: const TextSpan(

@@ -4,6 +4,7 @@ import 'package:pos_mini/blocs/take_away/take_away_bloc.dart';
 import 'package:pos_mini/screens/main/widgets/take_away/widgets/menu_item_display_screen/widget/category_display/category_display_widget.dart';
 import 'package:pos_mini/screens/main/widgets/take_away/widgets/menu_item_display_screen/widget/menu_display/menu_display_widget.dart';
 import 'package:pos_mini/screens/main/widgets/take_away/widgets/menu_item_display_screen/widget/search_product_widget/search_product_widget.dart';
+import 'package:pos_mini/util/color_constants.dart';
 
 class MenuItemDisplayScreen extends StatefulWidget {
   const MenuItemDisplayScreen({super.key});
@@ -51,7 +52,7 @@ class _MenuItemDisplayScreenState extends State<MenuItemDisplayScreen> {
               _showProductSearchDialog(screenWidth);
             },
             foregroundColor: Colors.white,
-            backgroundColor: const Color.fromARGB(255, 0, 26, 51),
+            backgroundColor: deepBlueColour,
             child: const Icon(Icons.search),
           ),
 

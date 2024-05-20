@@ -21,7 +21,11 @@ import 'package:pos_mini/repository/shared_data_repository/shared_data_repositor
 import 'package:pos_mini/repository/shared_preferences_repository.dart';
 import 'package:pos_mini/screens/main/widgets/add/widgets/dine_in/screen/edit_table_screen/bloc/edit_table_cubit.dart';
 import 'package:pos_mini/screens/main/widgets/add/widgets/dine_in/screen/show_all_table_under_area/bloc/show_all_table_under_an_area_cubit.dart';
+import 'package:pos_mini/screens/main/widgets/dine_in_table/table/cubit/table_screen_cubit.dart';
+import 'package:pos_mini/screens/main/widgets/dine_in_table/table_food_item/cubit/table_food_selection_cubit.dart';
+import 'package:pos_mini/screens/main/widgets/dine_in_table/table_kot/cubit/table_kot_cubit.dart';
 import 'package:pos_mini/screens/splash/splash_screen.dart';
+import 'package:pos_mini/util/color_constants.dart';
 
 import 'blocs/settings/get_all_users/get_all_users_cubit.dart';
 
@@ -49,7 +53,6 @@ class MyApp extends StatelessWidget {
         RepositoryProvider(
           create: (_) => SharedDataRepository(),
         ),
-
       ],
       child: MultiBlocProvider(
         providers: [
@@ -135,12 +138,26 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => ShowAllTableUnderAnAreaCubit(
+                apiRepository: context.read<ApiRepository>(),
+                sharedDataRepository: context.read<SharedDataRepository>()),
+          ),
+          BlocProvider(
+              create: (context) =>
+                  EditTableCubit(apiRepository: context.read<ApiRepository>())),
+          BlocProvider(
+              create: (context) => TableScreenCubit(
+                  apiRepository: context.read<ApiRepository>())),
+          BlocProvider(
+            create: (context) => TableKotCubit(
               apiRepository: context.read<ApiRepository>(),
-              sharedDataRepository: context.read<SharedDataRepository>()
+              sharedDataRepository: context.read<SharedDataRepository>(),
             ),
           ),
           BlocProvider(
-            create: (context) => EditTableCubit(apiRepository: context.read<ApiRepository>())
+            create: (context) => TableFoodSelectionCubit(
+              apiRepository: context.read<ApiRepository>(),
+              sharedDataRepository: context.read<SharedDataRepository>(),
+            ),
           ),
         ],
         child: MaterialApp(
@@ -148,7 +165,8 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(
-                seedColor: const Color.fromARGB(255, 0, 26, 51)),
+                seedColor: deepBlueColour,
+            ),
             useMaterial3: true,
           ),
           navigatorObservers: [routeObserver],

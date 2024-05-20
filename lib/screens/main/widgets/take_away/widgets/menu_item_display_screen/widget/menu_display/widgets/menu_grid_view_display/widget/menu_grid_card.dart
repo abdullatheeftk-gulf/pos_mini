@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pos_mini/main.dart';
 import 'package:pos_mini/models/food_item/food_item.dart';
+import 'package:pos_mini/util/color_constants.dart';
 
 class MenuGridCard extends StatelessWidget {
   final FoodItem product;
@@ -52,7 +53,7 @@ class MenuGridCard extends StatelessWidget {
               child: Material(
                 child: Center(
                   child: Ink(
-                    color: const Color.fromARGB(255, 236, 102, 56),
+                    color: appYellowColour,
                     height: 100.0,
                     child: InkWell(
                       onTap: () {

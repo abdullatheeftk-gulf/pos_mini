@@ -8,16 +8,38 @@ import 'package:pos_mini/util/api_error/api_error.dart';
 
 
 
+
 part 'splash_event.dart';
 part 'splash_state.dart';
 
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
   final ApiRepository apiRepository;
   final SharedPreferencesRepository sharedPreferencesRepository;
-  SplashBloc({required this.sharedPreferencesRepository, required this.apiRepository}) : super(SplashInitial()) {
+  //int value = 0;
+  SplashBloc({required this.sharedPreferencesRepository, required this.apiRepository}) : super(SplashInitial())  {
 
     on<FetchWelcomeMessageEvent>(_fetchWelcomeMessageEvent);
+    /*Future.doWhile(() async{
+      value++;
+      printWarning("repeat $value");
+      await Future.delayed(const Duration(seconds: 1));
+      if(value == 10){
+        return false;
+      }else{
+        return true;
+      }
+    });*/
 
+  }
+
+
+
+
+  @override
+  Future<Function> close() async{
+    //printWarning("splash bloc closed");
+    super.close();
+    return (){};
   }
 
   FutureOr<void> _fetchWelcomeMessageEvent(FetchWelcomeMessageEvent event, Emitter<SplashState> emit) async{
@@ -26,8 +48,11 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     emit(SplashApiFetchingStartedState());
 
     final baseUrl = await sharedPreferencesRepository.getBaseUrl();
+   // printWarning(" base url from the shared preferences $baseUrl");
 
     final result = await apiRepository.getWelcomeMessage(baseUrl);
+
+
 
     if(result is ApiError){
       emit(SplashApiFetchingFailedState(apiError: result));

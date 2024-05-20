@@ -36,6 +36,7 @@ class Constants{
   static const String getAllTableUnderAnArea = "/table/getTablesByAreaId/";
   static const String updateATable = "/table/updateATable";
   static const String deleteATable = "/table/deleteATableById/";
+  static const String getAllKotUnderATable = "/table/getAllKotUnderATable/";
 
   // Barcode
   static const String addBarcode = '/barcode/addBarcode';

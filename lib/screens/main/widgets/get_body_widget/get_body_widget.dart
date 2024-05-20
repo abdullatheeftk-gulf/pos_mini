@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pos_mini/screens/main/widgets/add/add_screen.dart';
 import 'package:pos_mini/screens/main/widgets/settings/settings_main_screen.dart';
+import 'package:pos_mini/screens/main/widgets/dine_in_table/table/table_screen.dart';
 import 'package:pos_mini/screens/main/widgets/take_away/take_away_screen.dart';
 
 Widget getBodyWidget({
@@ -17,6 +18,9 @@ Widget getBodyWidget({
     }
     case "Settings":{
       return  SettingsMainScreen(isAdminLogin: isAdminLogin,);
+    }
+    case "Table":{
+      return const  TableScreen();
     }
     default:{
       return Center(

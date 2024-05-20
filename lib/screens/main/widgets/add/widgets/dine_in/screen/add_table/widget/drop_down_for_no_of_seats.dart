@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/add/dine_in/table/add_table_cubit.dart';
 import 'package:pos_mini/models/dine_in/table/dine_in_table.dart';
 import 'package:pos_mini/util/new_pair/new_pair.dart';
-import 'package:pos_mini/util/pair.dart';
+
 
 class DropDownForNoOfSeats extends StatefulWidget {
   final DineInTable? dineInTable;

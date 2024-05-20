@@ -4,6 +4,7 @@ import 'package:pos_mini/blocs/take_away/take_away_bloc.dart';
 import 'package:pos_mini/screens/main/widgets/take_away/widgets/cart_display_screen/cart_display_screen.dart';
 import 'package:pos_mini/screens/main/widgets/take_away/widgets/menu_item_display_screen/menu_item_display_screen.dart';
 import 'package:pos_mini/screens/ui_util/show_floating_action_circular_progress_indicator.dart';
+import 'package:pos_mini/util/color_constants.dart';
 
 
 class TakeAwayScreen extends StatefulWidget {
@@ -98,7 +99,7 @@ class _TakeAwayScreenState extends State<TakeAwayScreen> {
                   ),
                 ],
               ),
-              backgroundColor: const Color.fromARGB(255, 236, 102, 56),
+              backgroundColor: appOrangeColour,
             ),
             body: const TabBarView(
               children: [

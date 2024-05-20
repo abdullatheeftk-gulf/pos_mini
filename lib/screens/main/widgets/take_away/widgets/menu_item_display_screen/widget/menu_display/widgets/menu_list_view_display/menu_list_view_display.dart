@@ -18,6 +18,31 @@ class MenuListViewDisplay extends StatelessWidget {
       builder: (context, constraints) {
         final width = constraints.widthConstraints().maxWidth;
 
+        if(products.isEmpty){
+          return Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.no_food_rounded,
+                  size: width > 600 ? 150 : 100,
+                  color: const Color.fromARGB(124, 124, 124, 124),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                const Text(
+                  "Empty List",
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Color.fromARGB(124, 124, 124, 124),
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
+
 
 
         return GridView.count(
