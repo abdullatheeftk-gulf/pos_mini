@@ -19,13 +19,14 @@ import 'package:pos_mini/blocs/user_login/user_login_bloc.dart';
 import 'package:pos_mini/repository/api_repository/api_repository.dart';
 import 'package:pos_mini/repository/shared_data_repository/shared_data_repository.dart';
 import 'package:pos_mini/repository/shared_preferences_repository.dart';
-import 'package:pos_mini/screens/main/widgets/add/widgets/dine_in/screen/edit_table_screen/bloc/edit_table_cubit.dart';
-import 'package:pos_mini/screens/main/widgets/add/widgets/dine_in/screen/show_all_table_under_area/bloc/show_all_table_under_an_area_cubit.dart';
-import 'package:pos_mini/screens/main/widgets/dine_in_table/table/cubit/table_screen_cubit.dart';
-import 'package:pos_mini/screens/main/widgets/dine_in_table/table_food_item/cubit/table_food_selection_cubit.dart';
-import 'package:pos_mini/screens/main/widgets/dine_in_table/table_kot/cubit/table_kot_cubit.dart';
+import 'package:pos_mini/screens/main/screens/add/widgets/dine_in/screen/edit_table_screen/bloc/edit_table_cubit.dart';
+import 'package:pos_mini/screens/main/screens/add/widgets/dine_in/screen/show_all_table_under_area/bloc/show_all_table_under_an_area_cubit.dart';
+import 'package:pos_mini/screens/main/screens/dine_in_table/table/cubit/table_screen_cubit.dart';
+import 'package:pos_mini/screens/main/screens/dine_in_table/table_food_item/cubit/table_food_selection_cubit.dart';
+import 'package:pos_mini/screens/main/screens/dine_in_table/table_kot/cubit/table_kot_cubit.dart';
 import 'package:pos_mini/screens/splash/splash_screen.dart';
 import 'package:pos_mini/util/color_constants.dart';
+
 
 import 'blocs/settings/get_all_users/get_all_users_cubit.dart';
 
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider(

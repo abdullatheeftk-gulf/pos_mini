@@ -8,7 +8,7 @@ part of 'food_item.dart';
 
 _$FoodItemImpl _$$FoodItemImplFromJson(Map<String, dynamic> json) =>
     _$FoodItemImpl(
-      foodItemId: json['foodItemId'] as int,
+      foodItemId: (json['foodItemId'] as num).toInt(),
       foodItemName: json['foodItemName'] as String,
       foodItemLocalName: json['foodItemLocalName'] as String? ?? null,
       foodItemPrice: (json['foodItemPrice'] as num).toDouble(),
@@ -17,13 +17,14 @@ _$FoodItemImpl _$$FoodItemImplFromJson(Map<String, dynamic> json) =>
       foodItemImage: json['foodItemImage'] as String? ?? null,
       noOfTimesOrdered: (json['noOfTimesOrdered'] as num?)?.toDouble() ?? 0.0,
       info: json['info'] as String? ?? null,
-      subCategoryId: json['subCategoryId'] as int? ?? null,
+      subCategoryId: (json['subCategoryId'] as num?)?.toInt() ?? null,
       multiFoodItems: (json['multiFoodItems'] as List<dynamic>?)
               ?.map((e) => MultiFoodItem.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      categories:
-          (json['categories'] as List<dynamic>).map((e) => e as int).toList(),
+      categories: (json['categories'] as List<dynamic>)
+          .map((e) => (e as num).toInt())
+          .toList(),
       barcode: json['barcode'] as String,
     );
 

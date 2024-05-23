@@ -8,9 +8,9 @@ part of 'barcode.dart';
 
 _$BarcodeImpl _$$BarcodeImplFromJson(Map<String, dynamic> json) =>
     _$BarcodeImpl(
-      foodItemId: json['foodItemId'] as int? ?? null,
-      multiFoodItemId: json['multiFoodItemId'] as int? ?? null,
-      tableId: json['tableId'] as int? ?? null,
+      foodItemId: (json['foodItemId'] as num?)?.toInt() ?? null,
+      multiFoodItemId: (json['multiFoodItemId'] as num?)?.toInt() ?? null,
+      tableId: (json['tableId'] as num?)?.toInt() ?? null,
       mBarcode: json['barcode'] as String?,
     );
 

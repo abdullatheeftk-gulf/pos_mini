@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/blocs/main/main_bloc.dart';
-import 'package:pos_mini/screens/main/widgets/drawer_menu/drawer_menu.dart';
-import 'package:pos_mini/screens/main/widgets/get_body_widget/get_body_widget.dart';
+import 'package:pos_mini/screens/main/screens/drawer_menu/drawer_menu.dart';
+import 'package:pos_mini/screens/main/screens/get_body_widget/get_body_widget.dart';
 
 import '../../util/pair.dart';
 

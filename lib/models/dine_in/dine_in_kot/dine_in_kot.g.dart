@@ -8,9 +8,9 @@ part of 'dine_in_kot.dart';
 
 _$DineInKotImpl _$$DineInKotImplFromJson(Map<String, dynamic> json) =>
     _$DineInKotImpl(
-      kotId: json['kotId'] as int,
-      noOfChairRequired: json['noOfChairRequired'] as int,
-      dineTableId: json['dineTableId'] as int,
+      kotId: (json['kotId'] as num).toInt(),
+      noOfChairRequired: (json['noOfChairRequired'] as num).toInt(),
+      dineTableId: (json['dineTableId'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$DineInKotImplToJson(_$DineInKotImpl instance) =>

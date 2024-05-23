@@ -6,7 +6,7 @@ import 'package:pos_mini/models/cart_product_item/cart_product_item.dart';
 import 'package:pos_mini/models/category/category.dart';
 import 'package:pos_mini/models/food_item/food_item.dart';
 import 'package:pos_mini/repository/api_repository/api_repository.dart';
-import 'package:pos_mini/screens/main/widgets/take_away/widgets/menu_item_display_screen/widget/menu_display/util/ProductView.dart';
+import 'package:pos_mini/screens/main/screens/take_away/widgets/menu_item_display_screen/widget/menu_display/util/ProductView.dart';
 import 'package:pos_mini/util/api_error/api_error.dart';
 
 part 'take_away_event.dart';

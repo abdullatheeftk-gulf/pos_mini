@@ -8,8 +8,8 @@ part of 'multi_food_item.dart';
 
 _$MultiFoodItemImpl _$$MultiFoodItemImplFromJson(Map<String, dynamic> json) =>
     _$MultiFoodItemImpl(
-      multiFoodItemId: json['multiFoodItemId'] as int,
-      parentFoodItemId: json['parentFoodItemId'] as int,
+      multiFoodItemId: (json['multiFoodItemId'] as num).toInt(),
+      parentFoodItemId: (json['parentFoodItemId'] as num).toInt(),
       multiFoodItemName: json['multiFoodItemName'] as String,
       multiFoodItemLocalName: json['multiFoodItemLocalName'] as String? ?? null,
       multiFoodItemImage: json['multiFoodItemImage'] as String? ?? null,

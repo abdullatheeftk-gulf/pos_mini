@@ -8,9 +8,9 @@ part of 'category.dart';
 
 _$CategoryImpl _$$CategoryImplFromJson(Map<String, dynamic> json) =>
     _$CategoryImpl(
-      categoryId: json['categoryId'] as int? ?? 0,
+      categoryId: (json['categoryId'] as num?)?.toInt() ?? 0,
       categoryName: json['categoryName'] as String,
-      noOfTimesOrdered: json['noOfTimesOrdered'] as int? ?? 0,
+      noOfTimesOrdered: (json['noOfTimesOrdered'] as num?)?.toInt() ?? 0,
       subCategories: (json['subCategories'] as List<dynamic>?)
               ?.map((e) => SubCategory.fromJson(e as Map<String, dynamic>))
               .toList() ??
