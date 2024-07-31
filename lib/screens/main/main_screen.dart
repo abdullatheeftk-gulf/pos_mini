@@ -19,7 +19,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Pair<String, String>> _drawerMenuItems = [
     Pair(first: 'Take Away', second: 'take_away.png'),
-    Pair(first: 'Table', second: 'table.png'),
+    Pair(first: 'Dine In', second: 'table.png'),
     Pair(first: 'Edit', second: 'edit.png'),
     Pair(first: 'Add', second: 'add_product.png'),
     Pair(first: 'Settings', second: 'setting.png'),

@@ -59,7 +59,7 @@ class _AreaDisplayState extends State<AreaDisplay> {
               child:  ListView.separated(
                 itemBuilder: (context, index) {
                   // dine in area
-                  final dineInArea = _listOfDineInArea![index];
+                  final dineInArea = _listOfDineInArea[index];
 
                   // return rotate box
                   return RotatedBox(
@@ -81,7 +81,7 @@ class _AreaDisplayState extends State<AreaDisplay> {
                 separatorBuilder: (context, index) {
                   return const Divider();
                 },
-                itemCount: _listOfDineInArea?.length ?? 0,
+                itemCount: _listOfDineInArea.length,
               ),
             );
           },

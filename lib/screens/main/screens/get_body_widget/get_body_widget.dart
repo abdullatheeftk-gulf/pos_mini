@@ -19,7 +19,7 @@ Widget getBodyWidget({
     case "Settings":{
       return  SettingsMainScreen(isAdminLogin: isAdminLogin,);
     }
-    case "Table":{
+    case "Dine In":{
       return const  TableScreen();
     }
     default:{

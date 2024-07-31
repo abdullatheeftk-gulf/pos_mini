@@ -50,13 +50,12 @@ class AddTableCubit extends Cubit<AddTableState> {
     _barcodeId = re;
 
     final dineTable = dineInTable.copyWith(
-      areaId: _dineInArea!.id,
+      areaId: _dineInArea?.id ?? 0,
       noOfSeats: _noOfSeatsSelected.second,
       image: _noOfSeatsSelected.first
     );
 
-    printDebug("\n---------------");
-    printDebug(dineTable.toString());
+
 
 
     final result = await apiRepository.addATable(dineTable);

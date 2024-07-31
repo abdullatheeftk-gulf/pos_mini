@@ -54,6 +54,7 @@ mixin DineTableRepository {
 
   Future<dynamic> getAllTablesUnderAnArea(int areaId) async {
     try {
+
       final  url = "${Constants.getAllTableUnderAnArea}$areaId";
       final response = await dio.get(
         url,
@@ -155,4 +156,6 @@ mixin DineTableRepository {
           errorCode: Constants.generalErrorCode, errorMessage: e.toString());
     }
   }
+
+
 }

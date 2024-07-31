@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AddNewKotListenerState {
   String? get errorMessage => throw _privateConstructorUsedError;
   String? get navigate => throw _privateConstructorUsedError;
+  ShowSelectTableDialog? get showSelectTableDialog =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddNewKotListenerStateCopyWith<AddNewKotListenerState> get copyWith =>
@@ -30,7 +32,12 @@ abstract class $AddNewKotListenerStateCopyWith<$Res> {
           $Res Function(AddNewKotListenerState) then) =
       _$AddNewKotListenerStateCopyWithImpl<$Res, AddNewKotListenerState>;
   @useResult
-  $Res call({String? errorMessage, String? navigate});
+  $Res call(
+      {String? errorMessage,
+      String? navigate,
+      ShowSelectTableDialog? showSelectTableDialog});
+
+  $ShowSelectTableDialogCopyWith<$Res>? get showSelectTableDialog;
 }
 
 /// @nodoc
@@ -49,6 +56,7 @@ class _$AddNewKotListenerStateCopyWithImpl<$Res,
   $Res call({
     Object? errorMessage = freezed,
     Object? navigate = freezed,
+    Object? showSelectTableDialog = freezed,
   }) {
     return _then(_value.copyWith(
       errorMessage: freezed == errorMessage
@@ -59,7 +67,24 @@ class _$AddNewKotListenerStateCopyWithImpl<$Res,
           ? _value.navigate
           : navigate // ignore: cast_nullable_to_non_nullable
               as String?,
+      showSelectTableDialog: freezed == showSelectTableDialog
+          ? _value.showSelectTableDialog
+          : showSelectTableDialog // ignore: cast_nullable_to_non_nullable
+              as ShowSelectTableDialog?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ShowSelectTableDialogCopyWith<$Res>? get showSelectTableDialog {
+    if (_value.showSelectTableDialog == null) {
+      return null;
+    }
+
+    return $ShowSelectTableDialogCopyWith<$Res>(_value.showSelectTableDialog!,
+        (value) {
+      return _then(_value.copyWith(showSelectTableDialog: value) as $Val);
+    });
   }
 }
 
@@ -72,7 +97,13 @@ abstract class _$$AddNewKotListenerStateImplCopyWith<$Res>
       __$$AddNewKotListenerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? errorMessage, String? navigate});
+  $Res call(
+      {String? errorMessage,
+      String? navigate,
+      ShowSelectTableDialog? showSelectTableDialog});
+
+  @override
+  $ShowSelectTableDialogCopyWith<$Res>? get showSelectTableDialog;
 }
 
 /// @nodoc
@@ -90,6 +121,7 @@ class __$$AddNewKotListenerStateImplCopyWithImpl<$Res>
   $Res call({
     Object? errorMessage = freezed,
     Object? navigate = freezed,
+    Object? showSelectTableDialog = freezed,
   }) {
     return _then(_$AddNewKotListenerStateImpl(
       errorMessage: freezed == errorMessage
@@ -100,6 +132,10 @@ class __$$AddNewKotListenerStateImplCopyWithImpl<$Res>
           ? _value.navigate
           : navigate // ignore: cast_nullable_to_non_nullable
               as String?,
+      showSelectTableDialog: freezed == showSelectTableDialog
+          ? _value.showSelectTableDialog
+          : showSelectTableDialog // ignore: cast_nullable_to_non_nullable
+              as ShowSelectTableDialog?,
     ));
   }
 }
@@ -108,7 +144,9 @@ class __$$AddNewKotListenerStateImplCopyWithImpl<$Res>
 
 class _$AddNewKotListenerStateImpl implements _AddNewKotListenerState {
   const _$AddNewKotListenerStateImpl(
-      {this.errorMessage = null, this.navigate = null});
+      {this.errorMessage = null,
+      this.navigate = null,
+      this.showSelectTableDialog = null});
 
   @override
   @JsonKey()
@@ -116,10 +154,13 @@ class _$AddNewKotListenerStateImpl implements _AddNewKotListenerState {
   @override
   @JsonKey()
   final String? navigate;
+  @override
+  @JsonKey()
+  final ShowSelectTableDialog? showSelectTableDialog;
 
   @override
   String toString() {
-    return 'AddNewKotListenerState(errorMessage: $errorMessage, navigate: $navigate)';
+    return 'AddNewKotListenerState(errorMessage: $errorMessage, navigate: $navigate, showSelectTableDialog: $showSelectTableDialog)';
   }
 
   @override
@@ -130,11 +171,14 @@ class _$AddNewKotListenerStateImpl implements _AddNewKotListenerState {
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.navigate, navigate) ||
-                other.navigate == navigate));
+                other.navigate == navigate) &&
+            (identical(other.showSelectTableDialog, showSelectTableDialog) ||
+                other.showSelectTableDialog == showSelectTableDialog));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, errorMessage, navigate);
+  int get hashCode =>
+      Object.hash(runtimeType, errorMessage, navigate, showSelectTableDialog);
 
   @JsonKey(ignore: true)
   @override
@@ -146,13 +190,17 @@ class _$AddNewKotListenerStateImpl implements _AddNewKotListenerState {
 
 abstract class _AddNewKotListenerState implements AddNewKotListenerState {
   const factory _AddNewKotListenerState(
-      {final String? errorMessage,
-      final String? navigate}) = _$AddNewKotListenerStateImpl;
+          {final String? errorMessage,
+          final String? navigate,
+          final ShowSelectTableDialog? showSelectTableDialog}) =
+      _$AddNewKotListenerStateImpl;
 
   @override
   String? get errorMessage;
   @override
   String? get navigate;
+  @override
+  ShowSelectTableDialog? get showSelectTableDialog;
   @override
   @JsonKey(ignore: true)
   _$$AddNewKotListenerStateImplCopyWith<_$AddNewKotListenerStateImpl>

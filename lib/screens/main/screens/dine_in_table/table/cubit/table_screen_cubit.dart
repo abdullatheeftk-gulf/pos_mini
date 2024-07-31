@@ -1,6 +1,7 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_mini/models/dine_in/area/dine_in_area.dart';
+import 'package:pos_mini/models/kot_classes/kot/kot.dart';
 import 'package:pos_mini/repository/api_repository/api_repository.dart';
 import 'package:pos_mini/screens/main/screens/dine_in_table/table/cubit/area_build_state/table_build_state.dart';
 import 'package:pos_mini/screens/main/screens/dine_in_table/table/cubit/listener_state/table_listener_state.dart';
@@ -73,4 +74,22 @@ class TableScreenCubit extends Cubit<TableScreenState> {
     emit(const TableBuildState(showProgressBar: false));
     emit(TableListenerState(navigate: navigate));
   }
+
+
+  void getAllKotListUnderAnArea(int areaId) async{
+    emit(const TableBuildState(showProgressBar: false));
+
+    final result = await apiRepository.getKotListUnderAnArea(areaId);
+
+    if(result is ApiError){
+      final errorMessage= "error:- ${result.errorData}";
+      emit(TableBuildState(showProgressBar: false,errorMessage: errorMessage));
+      emit(TableListenerState(errorMessage: errorMessage));
+      return;
+    }
+
+    emit(const TableBuildState(showProgressBar: false));
+    emit(TableScreenGetKotListUnderAnArea(listOfKot: result));
+  }
+
 }

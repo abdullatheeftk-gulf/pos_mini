@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,12 +23,13 @@ import 'package:pos_mini/repository/shared_data_repository/shared_data_repositor
 import 'package:pos_mini/repository/shared_preferences_repository.dart';
 import 'package:pos_mini/screens/main/screens/add/widgets/dine_in/screen/edit_table_screen/bloc/edit_table_cubit.dart';
 import 'package:pos_mini/screens/main/screens/add/widgets/dine_in/screen/show_all_table_under_area/bloc/show_all_table_under_an_area_cubit.dart';
+import 'package:pos_mini/screens/main/screens/dine_in_table/add_new_kot/bolc/add_new_kot_cubit.dart';
 import 'package:pos_mini/screens/main/screens/dine_in_table/table/cubit/table_screen_cubit.dart';
 import 'package:pos_mini/screens/main/screens/dine_in_table/table_food_item/cubit/table_food_selection_cubit.dart';
 import 'package:pos_mini/screens/main/screens/dine_in_table/table_kot/cubit/table_kot_cubit.dart';
 import 'package:pos_mini/screens/splash/splash_screen.dart';
 import 'package:pos_mini/util/color_constants.dart';
-
+import 'package:pos_mini/util/log_functions/log_functions.dart';
 
 import 'blocs/settings/get_all_users/get_all_users_cubit.dart';
 
@@ -43,7 +46,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider(
@@ -161,13 +163,19 @@ class MyApp extends StatelessWidget {
               sharedDataRepository: context.read<SharedDataRepository>(),
             ),
           ),
+          BlocProvider(
+            create: (context) => AddNewKotCubit(
+              apiRepository: context.read<ApiRepository>(),
+            ),
+          )
         ],
         child: MaterialApp(
+          scrollBehavior: MyCustomScrollBehavior(),
           title: 'Unipos Pos Mini',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(
-                seedColor: deepBlueColour,
+              seedColor: deepBlueColour,
             ),
             useMaterial3: true,
           ),
@@ -177,4 +185,51 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
+
+class HomeTest extends StatelessWidget {
+  const HomeTest({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Row(
+      children: [
+        Expanded(
+          flex: 1,
+          child: Center(
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final maxWidth = constraints.maxWidth;
+                return Text("screen width $maxWidth");
+              },
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Center(
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final maxWidth = constraints.maxWidth;
+                return Text("screen width $maxWidth");
+              },
+            ),
+          ),
+        ),
+      ],
+    ),
+    );
+  }
+}
+
+
+class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  // Override behavior methods and getters like dragDevices
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+    PointerDeviceKind.touch,
+    PointerDeviceKind.mouse,
+    // etc.
+  };
 }

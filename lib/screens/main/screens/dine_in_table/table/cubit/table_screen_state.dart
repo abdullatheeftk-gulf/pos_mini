@@ -16,3 +16,9 @@ final class TableScreenGetAllAreasState extends TableScreenState{
 
   TableScreenGetAllAreasState({required this.list});
 }
+
+final class TableScreenGetKotListUnderAnArea extends TableScreenState{
+  final List<Kot> listOfKot;
+
+  TableScreenGetKotListUnderAnArea({required this.listOfKot});
+}

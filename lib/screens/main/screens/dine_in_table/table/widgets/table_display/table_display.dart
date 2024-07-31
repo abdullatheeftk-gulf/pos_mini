@@ -6,23 +6,17 @@ import 'package:pos_mini/screens/main/screens/dine_in_table/table/cubit/table_sc
 import 'package:pos_mini/screens/main/screens/dine_in_table/table/widgets/table_display/widgets/table_item.dart';
 
 
-class TadbleDisplay extends StatefulWidget {
-  const TadbleDisplay({super.key});
+class TableDisplay extends StatefulWidget {
+  const TableDisplay({super.key});
 
   @override
-  State<TadbleDisplay> createState() => _TadbleDisplayState();
+  State<TableDisplay> createState() => _TableDisplayState();
 }
 
-class _TadbleDisplayState extends State<TadbleDisplay> {
-
+class _TableDisplayState extends State<TableDisplay> {
   
-
-  
-
   List<DineInTable>? dineInTables;
-
-
-
+  
   @override
   Widget build(BuildContext context) {
     return Padding(

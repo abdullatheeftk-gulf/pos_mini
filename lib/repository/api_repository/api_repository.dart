@@ -12,6 +12,7 @@ import 'package:pos_mini/models/dine_in/area/dine_in_area.dart';
 import 'package:pos_mini/models/dine_in/dine_in_kot/dine_in_kot.dart';
 import 'package:pos_mini/models/dine_in/table/dine_in_table.dart';
 import 'package:pos_mini/models/food_item/food_item.dart';
+import 'package:pos_mini/models/kot_classes/kot/kot.dart';
 
 import 'package:pos_mini/models/tran_response/tran_response.dart';
 import 'package:pos_mini/models/user/user.dart';
